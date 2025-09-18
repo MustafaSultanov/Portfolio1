@@ -5,7 +5,7 @@ export default function Home() {
 	return (
 		<div>
 			<div className="container">
-				<main className="flex items-center h-screen relative">
+				<main className="flex bg-red-500 items-center h-screen relative">
 					<div className="flex flex-col gap-3 z-[10] pt-20">
 						<h1 className="text-[50px] text-white max-w-[500px]">
 							Mustafa Sultanov

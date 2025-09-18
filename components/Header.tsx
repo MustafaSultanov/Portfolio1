@@ -4,12 +4,13 @@ import { BsGithub } from "react-icons/bs";
 import Link from "next/link";
 import AnimatedNumbers from "./ui/AnimatedNumbers";
 import Image from "next/image";
+import logo from '../public/assets/smzlogo.jpg'
 
 const Header = () => {
 	return (
-		<div className="fixed top-0 bg-[#01060f] shadow-[0px_4px_10px_rgba(0,0,255,0.5)] z-[20] w-full flex  gap-5 md:justify-between md:px-60 pi-5 ">
+		<div className="fixed top-0   shadow-[0px_4px_10px_rgba(0,0,255,0.5)] z-[20] w-full flex  gap-5 md:justify-between md:px-60 pi-5 ">
 			<div className="flex text-center items-center gap-3 ">
-				<Image src="/assets/smzlogo.jpg" alt="photo" width={80} height={80}  />
+				<Image src={logo} alt="photo"    className="w-[80px] h-[80px] rounded-full"  />
 				<span className="text-white text-4xl ">
 					<AnimatedNumbers value={2005} />
 				</span>
