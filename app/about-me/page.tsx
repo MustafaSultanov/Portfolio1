@@ -28,6 +28,7 @@ const Page = () => {
 								experienced Frontend developer who is always ready to take on
 								new challenges and learn new skills to create high-quality and
 								innovative web applications.
+								Мустафа
 							</p>
 						</div>
 						<Image
