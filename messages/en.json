@@ -1,0 +1,10 @@
+{
+  "Home": {
+    "title": "Welcome to our website",
+    "description": "This is the English version"
+  },
+  "About": {
+    "title": "About Us",
+    "description": "We are building a multilingual Next.js app."
+  }
+}

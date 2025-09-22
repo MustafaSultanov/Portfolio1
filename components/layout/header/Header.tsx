@@ -4,14 +4,16 @@ import { PiInstagramLogoBold } from "react-icons/pi";
 import { BsGithub } from "react-icons/bs";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Link from "next/link";
-import AnimatedNumbers from "./ui/AnimatedNumbers";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import logo from '../public/assets/smzlogo.jpg'
+import logo from '../../../public/assets/smzlogo.jpg'
+import AnimatedNumbers from "@/components/ui/AnimatedNumbers";
+import { useTranslations } from "next-intl";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	// const t = useTranslations("Home")
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -53,7 +55,7 @@ const Header = () => {
 								<div className="flex items-center gap-3">
 									<div className="w-8 h-px bg-gradient-to-r from-white/40 to-transparent group-hover:from-blue-400/60 transition-all duration-500"></div>
 									<span className="text-white/60 text-xs font-mono tracking-[0.2em] uppercase group-hover:text-white/80 transition-colors duration-300">
-										EST
+										{/* {t("title")} */}
 									</span>
 								</div>
 								<span className="text-white font-light text-2xl tracking-wide group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-500">
@@ -62,9 +64,7 @@ const Header = () => {
 							</div>
 						</div>
 
-						{/* Desktop Navigation */}
 						<nav className="hidden lg:flex items-center space-x-8">
-							{/* Navigation Links */}
 							<div className="flex items-center space-x-8">
 								{['Work', 'About', 'Contact'].map((item) => (
 									<Link 
@@ -80,10 +80,8 @@ const Header = () => {
 								))}
 							</div>
 
-							{/* Separator */}
 							<div className="w-px h-6 bg-white/20"></div>
 
-							{/* Social Links */}
 							<div className="flex items-center gap-4">
 								{[
 									{ icon: BsGithub, href: "https://github.com/SultanovMusa", color: "hover:text-gray-300" },
@@ -97,7 +95,6 @@ const Header = () => {
 											href={social.href}
 											className="group relative p-2"
 										>
-											{/* Hover background */}
 											<div className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300"></div>
 											<IconComponent className={`relative w-5 h-5 text-white/60 ${social.color} group-hover:scale-110 transition-all duration-300`} />
 										</Link>
@@ -105,7 +102,6 @@ const Header = () => {
 								})}
 							</div>
 
-							{/* CTA Button */}
 							<button className="group relative overflow-hidden">
 								<div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500"></div>
 								<div className="relative px-6 py-2.5 bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-white/20 rounded-lg text-white text-sm font-medium transition-all duration-300">
