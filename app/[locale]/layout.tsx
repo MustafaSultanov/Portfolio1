@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import LayoutClientRoot from "./layout.c";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { ThemeProvider } from "@/components/darkMode/theme-provider";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -58,7 +59,13 @@ export default async function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<NextIntlClientProvider messages={messages}>
-					<LayoutClientRoot>{children}</LayoutClientRoot>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange>
+						<LayoutClientRoot>{children}</LayoutClientRoot>
+					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>
 		</html>
