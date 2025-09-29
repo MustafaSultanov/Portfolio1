@@ -1,22 +1,52 @@
-"use client"
+"use client";
 import React from "react";
 import ProfileShape from "../ProfileShape";
+import TechRotator from "@/components/ui/TechRotator/TechRotator";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 export default function HomePages() {
+	const textRef = useRef<HTMLParagraphElement>(null);
+	useEffect(() => {
+		if (textRef.current) {
+			const letters = textRef.current.querySelectorAll("span");
+			gsap.fromTo(
+				letters,
+				{ opacity: 0, y: 30 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.6,
+					ease: "power3.out",
+					stagger: 0.05, // ар бир тамга кечигүү менен чыгат
+				}
+			);
+		}
+	}, []);
+
+	// текстти ар бир тамга span менен бөлүп чыгаруучу функция
+	const wrapLetters = (text: string) => {
+		return text.split("").map((char, i) => (
+			<span key={i} className="inline-block">
+				{char === " " ? "\u00A0" : char}
+			</span>
+		));
+	};
 	return (
-		<div className="min-h-screen bg-black text-white overflow-hidden">
+		<div className="  bg-white dark:bg-zinc-900 text-white overflow-hidden">
 			<div className="relative">
-				{/* Background grid pattern */}
-				<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+				<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none"></div>
 
-				{/* Subtle gradient overlay */}
-				<div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-black to-zinc-900"></div>
+				{/* Dark gradient for depth */}
+				<div className="absolute inset-0  bg-gradient-to-br from-white via-white to-white dark:bg-gradient-to-br dark:from-zinc-900 dark:via-black dakr:to-zinc-800 opacity-90 pointer-events-none"></div>
 
-				<main className="relative z-10 min-h-screen flex items-center">
-					<div className="max-w-7xl mx-auto px-8 py-20 grid lg:grid-cols-2 gap-16 items-center">
-						{/* Left Content */}
+				<main className="relative z-10  h-[89.3vh]  flex items-center">
+					<div
+						data-aos="fade-right"
+						data-aos-offset="300"
+						data-aos-easing="ease-in-sine"
+						className="container mx-auto  w-full  px-8   grid lg:grid-cols-2 gap-16 items-center">
 						<div className="space-y-8">
-							{/* Name with elegant typography */}
 							<div className="space-y-4">
 								<div className="flex items-center gap-4 mb-6">
 									<div className="w-12 h-px bg-zinc-700"></div>
@@ -31,23 +61,27 @@ export default function HomePages() {
 								</h1>
 							</div>
 
-							{/* Role */}
 							<div className="space-y-2">
-								<p className="text-xl text-zinc-300 font-light">
-									Frontend Developer
-								</p>
+								<div className="flex items-center gap-3">
+									<p className="text-xl text-zinc-300 font-light">
+										Frontend Developer
+									</p>
+
+									<TechRotator />
+								</div>
+
 								<div className="w-24 h-px bg-gradient-to-r from-zinc-700 to-transparent"></div>
 							</div>
 
-							{/* Description */}
 							<div className="max-w-md space-y-6">
-								<p className="text-zinc-400 leading-relaxed">
-									Here you will find my projects and experience in frontend
-									development. I invite you to explore my work and learn more
-									about my professional journey.
+								<p
+									ref={textRef}
+									className="text-zinc-400 leading-relaxed text-lg max-w-xl">
+									{wrapLetters(
+										"Here you will find my projects and experience in frontend development. I invite you to explore my work and learn more about my professional journey."
+									)}
 								</p>
 
-								{/* CTA Buttons */}
 								<div className="flex items-center gap-6 pt-4">
 									<button className="group relative">
 										<div className="absolute -inset-0.5 bg-gradient-to-r from-zinc-700 to-zinc-600 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
@@ -62,26 +96,9 @@ export default function HomePages() {
 								</div>
 							</div>
 						</div>
-
-						{/* Right Content */}
-						<div className="relative flex justify-center lg:justify-end">
-							{/* Decorative elements */}
-							<div className="absolute top-20 right-20 w-32 h-32 border border-zinc-800 rounded-full opacity-30"></div>
-							<div className="absolute bottom-20 left-20 w-20 h-20 border border-zinc-800 rounded-full opacity-20"></div>
-						</div>
 					</div>
-
-					{/* Bottom decorative element */}
 					<div className="absolute bottom-0 left-0 right-0">
 						<ProfileShape />
-					</div>
-
-					{/* Scroll indicator */}
-					<div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-						<div className="flex flex-col items-center gap-2 text-zinc-500">
-							<span className="text-xs font-mono tracking-wider">SCROLL</span>
-							<div className="w-px h-8 bg-gradient-to-b from-zinc-600 to-transparent animate-pulse"></div>
-						</div>
 					</div>
 				</main>
 			</div>

@@ -90,12 +90,8 @@ const Header = () => {
 	return (
 		<>
 			<header
-				className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-					isScrolled
-						? "bg-gray-900/95 backdrop-blur-sm border-b border-gray-700"
-						: "bg-transparent"
-				}`}>
-				<div className="max-w-6xl mx-auto px-6 lg:px-8">
+				className={`fixed top-0   w-full z-50   bg-[#FFFFFF1A] dark:bg-[#FFFFFF1A] backdrop-blur-[80px] `}>
+				<div className="container mx-auto px-6 lg:px-8">
 					<div className="flex items-center justify-between h-20">
 						{/* Logo Section - Скромный дизайн */}
 						<div className="flex items-center">

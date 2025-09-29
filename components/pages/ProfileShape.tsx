@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import foto from '../../public/assets/musa.jpg'
 
 const ProfileShape = () => {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -30,9 +31,10 @@ const ProfileShape = () => {
           max-[400px]:w-[250px] max-[400px]:h-[250px] 
           max-[767px]:backdrop-filter-none max-[767px]:webkit-backdrop-filter-none max-[767px]:shadow-none"
 					style={{
-						backgroundImage: "url('/assets/musa.jpg')",
+						backgroundImage: `url("${foto}")`,
 						transform: `translate(${position.x}px, ${position.y}px)`,
-					}}></div>
+					}}>
+					</div>
 			</div>
 		</div>
 	);

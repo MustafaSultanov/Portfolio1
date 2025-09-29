@@ -7,8 +7,8 @@ import photo from '../../../public/assets/bulb.png'
 
 const AboutPages = () => {
 	return (
-		<div className="bg-black">
-			<div className="flex items-center  h-screen overflow-hidden">
+		<div className="bg-theme">
+			<div className="flex items-center  h-[89.2vh] overflow-hidden">
 				<div className="container">
 					<div className=" flex  justify-around mt-5 ">
 						<div className="  flex flex-col gap-3 pb-60 md:pb-0  text-center">
@@ -47,10 +47,10 @@ const AboutPages = () => {
 					<Image
 						src={photo}
 						alt="bulb"
-						priority={true}
+						// priority={true}
 						width={260}
 						height={260}
-						className="w-full h-full hidden md:block"
+						className="w-full h-full  "
 					/>
 				</div>
 			</div>

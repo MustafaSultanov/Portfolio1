@@ -40,17 +40,17 @@ body {
   box-sizing: border-box;
     background:black;
 }
-
+/* 
 .background {
   background-color: #1A1A25;
-}
+} */
 
-.container {
+/* .container {
 	width: 100%;
 	max-width: 1280px;
 	margin-inline: auto;
 	padding-inline: 20px
-}
+} */
 
 .main-black-background {
   background-color: var(--main-black);
@@ -121,7 +121,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 212 9% 14%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -158,14 +158,18 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
 .bg-theme {
-	background-color: #ffffff;
+  background-color: #ffffff; /* Light mode */
+  background-image:
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
+
 .dark .bg-theme {
-  background-color: #202327; /* фон түсү */
-  background-image: 
-    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-color: #202327; /* Dark mode */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size: 50px 50px;
 }
