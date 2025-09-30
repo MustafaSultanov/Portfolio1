@@ -92,6 +92,7 @@ export default function HomePages() {
 
 									<button className="text-zinc-400 hover:text-white text-sm font-medium transition-colors duration-300 border-b border-transparent hover:border-zinc-600 pb-1">
 										Download CV
+										
 									</button>
 								</div>
 							</div>
