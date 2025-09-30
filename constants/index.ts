@@ -29,7 +29,7 @@ export const NavLinks = [
 	{
 		name: "About me",
 		icon: RxPerson,
-		link: "/about-me",
+		link: "/about",
 	},
 	{
 		name: "Skills",

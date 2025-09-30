@@ -40,12 +40,12 @@ export default function HomePages() {
 				{/* Dark gradient for depth */}
 				<div className="absolute inset-0  bg-gradient-to-br from-white via-white to-white dark:bg-gradient-to-br dark:from-zinc-900 dark:via-black dakr:to-zinc-800 opacity-90 pointer-events-none"></div>
 
-				<main className="relative z-10  h-[89.3vh]  flex items-center">
+				<main className="relative z-10 container mx-auto    h-[89.3vh]  flex items-center">
 					<div
 						data-aos="fade-right"
 						data-aos-offset="300"
 						data-aos-easing="ease-in-sine"
-						className="container mx-auto  w-full  px-8   grid lg:grid-cols-2 gap-16 items-center">
+						className="w-full  px-8   grid lg:grid-cols-2 gap-16 items-center">
 						<div className="space-y-8">
 							<div className="space-y-4">
 								<div className="flex items-center gap-4 mb-6">

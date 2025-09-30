@@ -26,7 +26,6 @@ const Header = () => {
 	const router = useRouter();
 	const pathname = usePathname();
 
-	// Scroll эффекти үчүн
 	useEffect(() => {
 		const handleScroll = () => {
 			setIsScrolled(window.scrollY > 50);
@@ -35,14 +34,7 @@ const Header = () => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
-	// Dropdown тышкарысын басканда жабуу үчүн
 	useEffect(() => {
-		interface Language {
-			name: string;
-			flag: StaticImageData;
-			code: string;
-		}
-
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
 				dropdownRef.current &&
@@ -61,7 +53,7 @@ const Header = () => {
 	const languages = [
 		{ name: "Кыргызча", flag: kyrgyzFlag, code: "kg" },
 		{ name: "Русский", flag: russianFlag, code: "ru" },
-		{ name: "Английский", flag: englishFlag, code: "en" },
+		{ name: "English", flag: englishFlag, code: "en" },
 	];
 
 	const currentLanguage =
@@ -69,17 +61,13 @@ const Header = () => {
 
 	const switchLanguage = (newLocale: string) => {
 		const pathSegments = pathname.split("/").filter((segment) => segment);
-
-		// Учурдагы locale убактысын алып салып, жаңы locale кошуу
 		const currentLocale = pathSegments[0];
 		let newPath = "";
 
-		// Эгерде учурдагы path тилди камтыса, аны алмаштыр
 		if (languages.some((lang) => lang.code === currentLocale)) {
 			pathSegments[0] = newLocale;
 			newPath = "/" + pathSegments.join("/");
 		} else {
-			// Эгерде тил жок болсо, башына кош
 			newPath = "/" + newLocale + pathname;
 		}
 
@@ -90,39 +78,53 @@ const Header = () => {
 	return (
 		<>
 			<header
-				className={`fixed top-0   w-full z-50   bg-[#FFFFFF1A] dark:bg-[#FFFFFF1A] backdrop-blur-[80px] `}>
-				<div className="container mx-auto px-6 lg:px-8">
+				className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+					isScrolled
+						? "bg-white/80 dark:bg-slate-950/90 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-slate-200/50 dark:border-slate-800/50"
+						: "bg-transparent"
+				}`}>
+				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center justify-between h-20">
-						{/* Logo Section - Скромный дизайн */}
-						<div className="flex items-center">
-							<div className="relative mr-4">
+						{/* Logo Section */}
+						<div className="flex items-center gap-3 group">
+							<div className="relative">
+								<div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
 								<Image
 									src={logo}
 									alt="Mustafa Sultanov"
-									className="w-12 h-12 lg:w-14 lg:h-14 rounded-sm"
+									className="relative w-11 h-11 lg:w-12 lg:h-12 rounded-lg ring-2 ring-white/10 dark:ring-white/5"
 								/>
 							</div>
-
-							<div className="hidden md:flex flex-col">
-								<span className="text-white font-medium text-xl">
-									Mustafa Sultanov
-								</span>
-								<span className="text-gray-400 text-sm">
-									<AnimatedNumbers value={2005} />
-								</span>
+							<div className="hidden sm:block">
+								<h1 className="text-lg font-semibold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+									Mustafa
+								</h1>
+								<p className="text-xs text-slate-500 dark:text-slate-400 -mt-0.5">
+									Full Stack Developer
+								</p>
 							</div>
 						</div>
 
 						{/* Desktop Navigation */}
-						<nav className="hidden lg:flex items-center space-x-8">
+						<nav className="hidden lg:flex items-center gap-8">
 							{/* Language Switcher */}
 							<div className="relative" ref={dropdownRef}>
 								<button
 									onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-									className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
-									{currentLanguage.name}
+									className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+									<div className="w-5 h-3.5 relative overflow-hidden rounded-sm">
+										<Image
+											src={currentLanguage.flag}
+											alt="flag"
+											layout="fill"
+											objectFit="cover"
+										/>
+									</div>
+									<span>{currentLanguage.name}</span>
 									<svg
-										className="h-4 w-4"
+										className={`h-4 w-4 transition-transform duration-200 ${
+											isLangDropdownOpen ? "rotate-180" : ""
+										}`}
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
 										fill="currentColor">
@@ -136,17 +138,17 @@ const Header = () => {
 
 								{/* Dropdown menu */}
 								{isLangDropdownOpen && (
-									<div className="absolute top-full right-0 mt-2 w-40 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50">
-										{languages.map((language) => (
+									<div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+										{languages.map((language, index) => (
 											<button
 												key={language.code}
-												className={`flex items-center w-full px-4 py-3 text-sm hover:bg-gray-700 transition-colors duration-200 ${
+												className={`flex items-center w-full px-4 py-3 text-sm transition-colors duration-150 ${
 													locale === language.code
-														? "bg-gray-700 text-white"
-														: "text-gray-300 hover:text-white"
-												}`}
+														? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
+														: "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
+												} ${index !== languages.length - 1 ? "border-b border-slate-100 dark:border-slate-800" : ""}`}
 												onClick={() => switchLanguage(language.code)}>
-												<div className="mr-3 w-6 h-4 relative overflow-hidden">
+												<div className="mr-3 w-6 h-4 relative overflow-hidden rounded-sm">
 													<Image
 														src={language.flag}
 														alt="flag"
@@ -162,19 +164,22 @@ const Header = () => {
 							</div>
 
 							{/* Social Links */}
-							<div className="flex items-center space-x-6">
+							<div className="flex items-center gap-2">
 								{[
 									{
 										icon: BsGithub,
 										href: "https://github.com/SultanovMusa",
+										label: "GitHub",
 									},
 									{
 										icon: PiInstagramLogoBold,
 										href: "https://www.instagram.com/sultanov_11_/",
+										label: "Instagram",
 									},
 									{
 										icon: BsTelegram,
 										href: "https://t.me/Mufa_Sultanov",
+										label: "Telegram",
 									},
 								].map((social, index) => {
 									const IconComponent = social.icon;
@@ -182,7 +187,8 @@ const Header = () => {
 										<Link
 											key={index}
 											href={social.href}
-											className="text-gray-400 hover:text-white transition-colors duration-200">
+											aria-label={social.label}
+											className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200">
 											<IconComponent className="w-5 h-5" />
 										</Link>
 									);
@@ -193,39 +199,50 @@ const Header = () => {
 						</nav>
 
 						{/* Mobile Menu Button */}
-						<button
-							onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-							className="lg:hidden text-gray-400 hover:text-white transition-colors duration-200">
-							{isMobileMenuOpen ? (
-								<HiOutlineX className="w-6 h-6" />
-							) : (
-								<HiOutlineMenu className="w-6 h-6" />
-							)}
-						</button>
+						<div className="flex items-center gap-3 lg:hidden">
+							<ModeToggle />
+							<button
+								onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+								className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200"
+								aria-label="Toggle menu">
+								{isMobileMenuOpen ? (
+									<HiOutlineX className="w-5 h-5" />
+								) : (
+									<HiOutlineMenu className="w-5 h-5" />
+								)}
+							</button>
+						</div>
 					</div>
 				</div>
 
 				{/* Mobile Menu */}
 				<div
-					className={`lg:hidden transition-all duration-300 overflow-hidden ${
-						isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+					className={`lg:hidden transition-all duration-300 ease-in-out ${
+						isMobileMenuOpen
+							? "max-h-screen opacity-100 visible"
+							: "max-h-0 opacity-0 invisible"
 					}`}>
-					<div className="bg-gray-900 border-t border-gray-700">
-						<div className="px-6 py-6 space-y-6">
+					<div className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 shadow-lg">
+						<div className="container mx-auto px-4 sm:px-6 py-6 space-y-6">
 							{/* Mobile Language Switcher */}
 							<div>
-								<div className="text-gray-400 text-sm mb-3">Language</div>
-								<div className="space-y-2">
+								<div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
+									Language
+								</div>
+								<div className="space-y-1">
 									{languages.map((language) => (
 										<button
 											key={language.code}
-											className={`flex items-center w-full px-3 py-2 text-sm rounded transition-colors duration-200 ${
+											className={`flex items-center w-full px-4 py-3 text-sm rounded-lg transition-all duration-200 ${
 												locale === language.code
-													? "bg-gray-700 text-white"
-													: "text-gray-300 hover:text-white hover:bg-gray-800"
+													? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium shadow-sm"
+													: "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
 											}`}
-											onClick={() => switchLanguage(language.code)}>
-											<div className="mr-3 w-6 h-4 relative overflow-hidden">
+											onClick={() => {
+												switchLanguage(language.code);
+												setIsMobileMenuOpen(false);
+											}}>
+											<div className="mr-3 w-6 h-4 relative overflow-hidden rounded-sm">
 												<Image
 													src={language.flag}
 													alt="flag"
@@ -240,8 +257,11 @@ const Header = () => {
 							</div>
 
 							{/* Mobile Social Links */}
-							<div className="border-t border-gray-700 pt-6">
-								<div className="flex items-center space-x-8">
+							<div className="border-t border-slate-200 dark:border-slate-800 pt-6">
+								<div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">
+									Connect
+								</div>
+								<div className="grid grid-cols-3 gap-3">
 									{[
 										{
 											icon: BsGithub,
@@ -264,19 +284,14 @@ const Header = () => {
 											<Link
 												key={index}
 												href={social.href}
-												className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200">
-												<IconComponent className="w-5 h-5" />
-												<span className="text-sm">{social.label}</span>
+												className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 group">
+												<IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
+												<span className="text-xs font-medium">{social.label}</span>
 											</Link>
 										);
 									})}
 								</div>
 							</div>
-
-							{/* Mobile Contact Button */}
-							{/* <button className="w-full py-3 bg-white text-gray-900 font-medium hover:bg-gray-100 transition-colors duration-200">
-								Contact
-							</button> */}
 						</div>
 					</div>
 				</div>

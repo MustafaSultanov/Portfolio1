@@ -3,56 +3,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, User, Sparkles, FolderOpen, MessageSquare } from "lucide-react";
-
-const NavLinks = [
-	{
-		name: "Home",
-		icon: Home,
-		link: "/",
-	},
-	{
-		name: "About me",
-		icon: User,
-		link: "/about",
-	},
-	{
-		name: "Skills",
-		icon: Sparkles,
-		link: "/my-skills",
-	},
-	{
-		name: "Project",
-		icon: FolderOpen,
-		link: "/my-project",
-	},
-	{
-		name: "Chat",
-		icon: MessageSquare,
-		link: "/chat",
-	},
-];
-
-// Transition Component
-const Transition = () => {
-	return (
-		<motion.div
-			initial={{ scaleY: 0 }}
-			animate={{ scaleY: 0 }}
-			exit={{ scaleY: 1 }}
-			transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-			className="fixed inset-0 z-[100] origin-bottom bg-gradient-to-t from-[#77BEF0] via-[#0c0f14] to-[#0c0f14]"
-		/>
-	);
-};
+import { NavLinks } from "@/constants";
+import Transition from "./Transition";
 
 const Sidebar = () => {
-	const [isActive, setIsActive] = useState("/");
-	const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
 	const [isRouting, setIsRouting] = useState(false);
+	const [isActive, setIsActive] = useState("/");
 	const [prevPath, setPrevPath] = useState("/");
+	const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
 
 	const path = usePathname();
+
 	const router = useRouter();
 
 	useEffect(() => {
@@ -66,7 +27,8 @@ const Sidebar = () => {
 			setPrevPath(path);
 			const timeout = setTimeout(() => {
 				setIsRouting(false);
-			}, 900);
+			}, 900); 
+
 			return () => clearTimeout(timeout);
 		}
 	}, [isRouting]);
@@ -76,76 +38,43 @@ const Sidebar = () => {
 	}, [path]);
 
 	return (
-		<div className="fixed left-1/2 -translate-x-1/2 bottom-8 z-50">
-			{/* Transition animation when routing */}
+		<div className="fixed left-[43%] pt-3 top-[90%] z-[20] h-[48px] w-[250px] rounded-full bg-[#01060f] shadow-[2px_6px_10px_rgba(0,0,255,0.5)]">
 			<AnimatePresence mode="wait">
 				{isRouting && <Transition />}
-			</AnimatePresence>
-
-			<motion.section
-				initial={{ y: 100, opacity: 0 }}
-				animate={{ y: 0, opacity: 1 }}
-				transition={{ duration: 0.5 }}
-				className="w-fit flex items-center justify-evenly bg-[#FFFFFF1A] dark:bg-[#FFFFFF1A] backdrop-blur-[80px] rounded-[30px] px-2 py-2">
-				{NavLinks.map((link, index) => {
-					const isCurrentActive = isActive === link.link;
-					const isHovered = hoveredIndex === index;
-
-					return (
-						<label
+				<div className="flex   gap-5 pb-3 justify-center items-center h-full">
+					{NavLinks.map((link, index) => (
+						<div
 							key={link.name}
-							title={link.name}
-							className="relative px-[18px] py-2 inline-block cursor-pointer transition-all duration-200 group"
+							onClick={() => {
+								setIsActive(link.name);
+								router.push(link.link);
+							}}
+							className="cursor-pointer"
 							onMouseEnter={() => setHoveredIndex(index)}
 							onMouseLeave={() => setHoveredIndex(null)}
-							onClick={() => {
-								setIsActive(link.link);
-								router.push(link.link);
-							}}>
-							{/* Hidden radio input */}
-							<input
-								type="radio"
-								name="page"
-								checked={isCurrentActive}
-								onChange={() => {}}
-								className="hidden"
+						>
+							<AnimatePresence>
+								{hoveredIndex === index && (
+									<motion.div
+										initial={{ opacity: 0, y: 10, scale: 0.8 }}
+										animate={{ opacity: 1, y: 0, scale: 1 }}
+										exit={{ opacity: 0, y: 5, scale: 0.9 }}
+										transition={{ duration: 0.2 }}
+										className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-slate-900 text-white text-xs font-medium rounded-lg whitespace-nowrap shadow-xl border border-white/20 pointer-events-none">
+										{link.name}
+										<div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px w-2 h-2 bg-slate-900 rotate-45 border-r border-b border-white/20" />
+									</motion.div>
+								)}
+							</AnimatePresence>
+							<link.icon
+								className={`w-[28px] h-[28px] ${
+									isActive === link.link ? "text-blue-800" : "text-white"
+								}`}
 							/>
-
-							{/* Bottom indicator line */}
-							<motion.div
-								initial={false}
-								animate={{
-									width: isCurrentActive ? "100%" : "0%",
-									left: isCurrentActive ? "0" : "50%",
-								}}
-								transition={{ duration: 0.2 }}
-								className="absolute top-[25px] h-[2px] rounded-[5px] bg-[#00BFFF] shadow-[0_0_10px_#00BFFF,0_0_20px_#00BFFF]"
-							/>
-
-							{/* Icon */}
-							<motion.div
-								initial={false}
-								animate={{
-									scale: isCurrentActive ? 1.2 : 1,
-									marginTop: isCurrentActive ? "-5px" : "0px",
-								}}
-								transition={{ duration: 0.3 }}>
-								<link.icon
-									className={`w-[14px] h-[14px] transition-all duration-300 ${
-										isCurrentActive
-											? "fill-[#00BFFF] text-[#00BFFF]"
-											: isHovered
-											? "fill-[#00BFFF] text-[#00BFFF] opacity-60"
-											: "fill-[#52555a] text-[#52555a]"
-									}`}
-									strokeWidth={0}
-									fill="currentColor"
-								/>
-							</motion.div>
-						</label>
-					);
-				})}
-			</motion.section>
+						</div>
+					))}
+				</div>
+			</AnimatePresence>
 		</div>
 	);
 };
