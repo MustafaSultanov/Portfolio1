@@ -10,6 +10,7 @@ import LayoutClientRoot from "./layout.c";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "@/components/darkMode/theme-provider";
+import AosInit from "@/components/ui/aos";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -58,6 +59,7 @@ export default async function RootLayout({
 			</head>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+					<AosInit/>
 				<NextIntlClientProvider messages={messages}>
 					<ThemeProvider
 						attribute="class"
