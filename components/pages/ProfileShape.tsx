@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import foto from '../../public/assets/musa.jpg'
 
 const ProfileShape = () => {
@@ -24,17 +25,22 @@ const ProfileShape = () => {
 		<div className="container">
 			<div className="right max-[1150px]:mb-6">
 				<div
-					className="shape relative bg-cover bg-center bg-no-repeat w-[410px] h-[400px] 
+					className="shape relative w-[410px] h-[400px] 
           border-[3px] border-solid border-[rgb(9, 9, 117)] shadow-[0_0_10px_rgba(181,9,189,0.5)] 
-          transition-all duration-1000 ease-in-out 
+          transition-all duration-1000 ease-in-out overflow-hidden
           max-[500px]:w-[300px] max-[500px]:h-[300px] 
           max-[400px]:w-[250px] max-[400px]:h-[250px] 
           max-[767px]:backdrop-filter-none max-[767px]:webkit-backdrop-filter-none max-[767px]:shadow-none"
 					style={{
-						backgroundImage: `url("${foto}")`,
 						transform: `translate(${position.x}px, ${position.y}px)`,
 					}}>
-					</div>
+					<Image
+						src={foto}
+						alt="Profile"
+						fill
+						className="object-cover"
+					/>
+				</div>
 			</div>
 		</div>
 	);
