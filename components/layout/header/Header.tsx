@@ -4,10 +4,10 @@ import { PiInstagramLogoBold } from "react-icons/pi";
 import { BsGithub } from "react-icons/bs";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import logo from "../../../public/assets/smzlogo.jpg";
-import AnimatedNumbers from "@/components/ui/AnimatedNumbers";
+// import AnimatedNumbers from "@/components/ui/AnimatedNumbers";
 import { useLocale, useTranslations } from "next-intl";
 import russianFlag from "../../../public/assets/flags/russian.png";
 import englishFlag from "../../../public/assets/flags/english.png";
@@ -136,7 +136,6 @@ const Header = () => {
 									</svg>
 								</button>
 
-								{/* Dropdown menu */}
 								{isLangDropdownOpen && (
 									<div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
 										{languages.map((language, index) => (
