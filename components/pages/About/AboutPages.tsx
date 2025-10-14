@@ -14,7 +14,6 @@ const AboutPages = () => {
 				<div className="container mx-auto max-w-7xl">
 					<div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
 						<div className="flex-1 space-y-8 max-w-2xl">
-							{/* Badge */}
 							<div className="flex items-center gap-4 mb-6">
 								<div className="w-12 h-px bg-zinc-700"></div>
 								<span className="text-zinc-400 text-sm font-mono tracking-wider uppercase">
@@ -22,7 +21,6 @@ const AboutPages = () => {
 								</span>
 							</div>
 
-							{/* Heading */}
 							<div className="space-y-4">
 								<h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-none">
 									<span className="block text-slate-800 dark:text-white font-normal">
@@ -33,7 +31,6 @@ const AboutPages = () => {
 								<div className="w-24 h-px bg-gradient-to-r from-zinc-700 to-transparent"></div>
 							</div>
 
-							{/* Description */}
 							<div className="max-w-md space-y-6">
 								<div className="relative p-0 shadow-none">
 									<p className="text-slate-700 dark:text-zinc-400 leading-relaxed text-lg">
@@ -125,7 +122,6 @@ const AboutPages = () => {
 							</div>
 						</div>
 
-						{/* Image Section */}
 						<div className="flex-1 relative lg:max-w-xl flex justify-center">
 							<div className="relative w-full max-w-md">
 								<div className="relative bg-white dark:bg-zinc-800 border border-zinc-700 rounded-3xl p-6 shadow-xl dark:shadow-black/50">
