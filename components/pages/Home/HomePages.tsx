@@ -36,7 +36,6 @@ export default function HomePages() {
 			<div className="relative">
 				<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none"></div>
 
-				{/* Dark gradient for depth */}
 				<div className="absolute inset-0  bg-gradient-to-br from-white via-white to-white dark:bg-gradient-to-br dark:from-zinc-900 dark:via-black dakr:to-zinc-800 opacity-90 pointer-events-none"></div>
 
 				<main className="relative z-10 container mx-auto    h-[89.3vh]  flex items-center">
