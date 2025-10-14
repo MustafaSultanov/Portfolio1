@@ -24,7 +24,6 @@ export default function HomePages() {
 		}
 	}, []);
 
-	// текстти ар бир тамга span менен бөлүп чыгаруучу функция
 	const wrapLetters = (text: string) => {
 		return text.split("").map((char, i) => (
 			<span key={i} className="inline-block">
