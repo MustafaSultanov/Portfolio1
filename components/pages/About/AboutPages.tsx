@@ -5,18 +5,14 @@ import photo from "../../../public/assets/bulb.png";
 
 const AboutPages = () => {
 	return (
-		// HomePages'тин караңгы, zinc негизиндеги фону
 		<div className="relative bg-white dark:bg-zinc-900 min-h-screen overflow-hidden transition-colors duration-500">
-			{/* Grid Pattern Overlay */}
 			<div className="absolute inset-0 bg-[linear-gradient(rgba(100,100,100,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,100,100,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none"></div>
 
-			{/* Dark gradient for depth */}
 			<div className="absolute inset-0 bg-gradient-to-br from-white via-white to-white dark:bg-gradient-to-br dark:from-zinc-900 dark:via-black dark:to-zinc-800 opacity-90 pointer-events-none"></div>
 
 			<div className="relative z-10 flex items-center min-h-screen py-20 px-4">
 				<div className="container mx-auto max-w-7xl">
 					<div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
-						{/* Text Content */}
 						<div className="flex-1 space-y-8 max-w-2xl">
 							{/* Badge */}
 							<div className="flex items-center gap-4 mb-6">
@@ -94,7 +90,7 @@ const AboutPages = () => {
 										for building robust, production-ready applications.
 									</p>
 									<p className="text-slate-600 dark:text-zinc-500 leading-relaxed mt-6 italic">
-										I'm always eager to tackle new challenges and master
+										Im always eager to tackle new challenges and master
 										emerging technologies to deliver innovative solutions.
 									</p>
 								</div>
