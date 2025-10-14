@@ -18,7 +18,7 @@ export default function HomePages() {
 					y: 0,
 					duration: 0.6,
 					ease: "power3.out",
-					stagger: 0.05, // ар бир тамга кечигүү менен чыгат
+					stagger: 0.05,  
 				}
 			);
 		}
