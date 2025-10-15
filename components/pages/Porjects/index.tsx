@@ -54,7 +54,6 @@ export default function Projects() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-900/40 to-black/70 pointer-events-none"></div>
 
       <div className="relative z-10 container mx-auto px-6 py-24">
-        {/* === TITLE === */}
         <div className="text-center mb-24 space-y-4">
           <div className="flex justify-center items-center gap-3">
             <div className="w-12 h-px bg-zinc-700"></div>
