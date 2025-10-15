@@ -86,7 +86,6 @@ export default function Projects() {
               data-aos-duration="1000"
               data-aos-once="true"
             >
-              {/* center dot */}
               <div className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg shadow-blue-500/30"></div>
 
               <div className="w-full md:w-1/2 group relative overflow-hidden rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-all duration-500 shadow-xl">
