@@ -71,7 +71,6 @@ export default function Projects() {
           </h1>
         </div>
 
-        {/* === PROJECT LIST === */}
         <div className="relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[1px] bg-gradient-to-b from-blue-500 via-purple-500 to-transparent opacity-30"></div>
 
