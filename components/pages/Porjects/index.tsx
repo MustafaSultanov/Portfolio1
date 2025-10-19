@@ -50,7 +50,6 @@ export default function Projects() {
       {/* === GRID FON === */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none"></div>
 
-      {/* === DARK GRADIENT LAYER === */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-zinc-900/40 to-black/70 pointer-events-none"></div>
 
       <div className="relative z-10 container mx-auto px-6 py-24">
