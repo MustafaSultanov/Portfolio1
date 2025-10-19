@@ -93,7 +93,6 @@ const AboutPages = () => {
 								</div>
 							</div>
 
-							{/* Stats Row */}
 							<div className="grid grid-cols-3 gap-4 pt-4">
 								<div className="border border-zinc-700/50 rounded-xl p-4 transition-all duration-300 hover:border-white/50">
 									<div className="text-3xl font-bold text-slate-800 dark:text-white">
