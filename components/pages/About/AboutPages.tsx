@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import AboutPhoto from "../../../public/assets/webdev.svg";
-import photo from "../../../public/assets/bulb.png"; 
+import photo from "../../../public/assets/bulb.png";
 
 const AboutPages = () => {
 	return (
@@ -25,7 +25,6 @@ const AboutPages = () => {
 								<h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-none">
 									<span className="block text-slate-800 dark:text-white font-normal">
 										About
-									
 									</span>
 								</h1>
 								<div className="w-24 h-px bg-gradient-to-r from-zinc-700 to-transparent"></div>
@@ -87,8 +86,8 @@ const AboutPages = () => {
 										for building robust, production-ready applications.
 									</p>
 									<p className="text-slate-600 dark:text-zinc-500 leading-relaxed mt-6 italic">
-										Im always eager to tackle new challenges and master
-										emerging technologies to deliver innovative solutions.
+										Im always eager to tackle new challenges and master emerging
+										technologies to deliver innovative solutions.
 									</p>
 								</div>
 							</div>
@@ -139,20 +138,18 @@ const AboutPages = () => {
 				</div>
 
 				{/* Animated Bulb Icon - Өчүрүлгөн стилде */}
-			<div className="absolute -left-36 bottom-6 rotate-12 animate-pulse duration-[3000ms]">
-  <Image
-    src={photo}
-    alt="bulb"
-    priority={true}
-    width={260}
-    height={260}
-    className="w-full h-full hidden md:block"
-  />
-</div>
-
+				<div className="absolute -left-36 bottom-6 rotate-12 animate-pulse duration-[3000ms]">
+					<Image
+						src={photo}
+						alt="bulb"
+						priority={true}
+						width={260}
+						height={260}
+						className="w-full h-full hidden md:block"
+					/>
+				</div>
 			</div>
-			
-			{/* Bottom Line */}
+
 			<div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-700 dark:via-zinc-600 to-transparent"></div>
 		</div>
 	);
