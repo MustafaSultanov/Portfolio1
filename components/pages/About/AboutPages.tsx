@@ -137,7 +137,6 @@ const AboutPages = () => {
 					</div>
 				</div>
 
-				{/* Animated Bulb Icon - Өчүрүлгөн стилде */}
 				<div className="absolute -left-36 bottom-6 rotate-12 animate-pulse duration-[3000ms]">
 					<Image
 						src={photo}
