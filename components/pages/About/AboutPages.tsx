@@ -50,7 +50,6 @@ const AboutPages = () => {
 								</p>
 							</div>
 
-							{/* Статистика карталары */}
 							<div className="grid grid-cols-3 gap-4 pt-4">
 								{[
 									{ value: "5+", label: "Years Exp." },
