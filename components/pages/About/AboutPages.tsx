@@ -17,7 +17,6 @@ const AboutPages = () => {
 				<div className="container mx-auto max-w-7xl">
 					<div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
 						
-						{/* Сол жак — текст */}
 						<div className="flex-1 space-y-8 max-w-2xl">
 							<div className="flex items-center gap-4 mb-6">
 								<div className="w-12 h-px bg-gradient-to-r from-blue-500 to-blue-400"></div>
