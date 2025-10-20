@@ -41,27 +41,7 @@ export const NavLinks = [
 		icon: RxDashboard,
 		link: "/my-project",
 	},
-	{
-		name: "Chat",
-		icon: BsChatSquareText,
-		link: "/chat",
-	},
 ];
-// !Imagae
-// export const ProImages = [
-// 	{
-// 		src: "/assets/projects/SpaceCity.jpg",
-// 	},
-// 	{
-// 		src: "/assets/projects/SpaceCity1.jpg",
-// 	},
-// 	{
-// 		src: "/assets/projects/SpaceCity2.jpg",
-// 	},
-// 	{
-// 		src: "/assets/projects/SpaceCity3.jpg",
-// 	},
-// ];
 
 // ! Skill data
 export const ServiceData = [

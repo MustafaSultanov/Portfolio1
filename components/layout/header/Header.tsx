@@ -80,7 +80,7 @@ const Header = () => {
 			<header
 				className={`fixed top-0 w-full z-50 transition-all duration-500 ${
 					isScrolled
-						? "bg-white/80 dark:bg-slate-950/90 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-slate-200/50 dark:border-slate-800/50"
+						? "bg-white/10 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-slate-200/50 dark:border-slate-800/50"
 						: "bg-[rgba(28,26,26,0.9)]"
 				}`}>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
