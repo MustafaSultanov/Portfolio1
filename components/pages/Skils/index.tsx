@@ -11,13 +11,11 @@ const ServiceSliderVIP = () => {
 	return (
 		<main className="relative min-h-screen bg-gradient-to-br from-white via-[#f7f9fb] to-[#e8ebf0] dark:from-[#0f1115] dark:via-[#13171d] dark:to-[#101418] overflow-hidden transition-colors duration-500">
 			
-			{/* Тунук blur фон эффекти */}
 			<div className="absolute inset-0 backdrop-blur-2xl bg-white/30 dark:bg-[#1a1f25]/30 pointer-events-none"></div>
 
 			<div className="absolute top-20 right-20 w-[420px] h-[420px] bg-white/40 dark:bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
 			<div className="absolute bottom-20 left-20 w-[420px] h-[420px] bg-white/30 dark:bg-white/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-			{/* Hero Section */}
 			<section className="relative flex flex-col items-center justify-center text-center pt-24 pb-20 px-6 z-10">
 				<div className="mb-8 flex items-center gap-4">
 					<div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
