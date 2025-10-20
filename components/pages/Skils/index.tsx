@@ -14,7 +14,6 @@ const ServiceSliderVIP = () => {
 			{/* Тунук blur фон эффекти */}
 			<div className="absolute inset-0 backdrop-blur-2xl bg-white/30 dark:bg-[#1a1f25]/30 pointer-events-none"></div>
 
-			{/* Light gradients */}
 			<div className="absolute top-20 right-20 w-[420px] h-[420px] bg-white/40 dark:bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
 			<div className="absolute bottom-20 left-20 w-[420px] h-[420px] bg-white/30 dark:bg-white/10 rounded-full blur-[100px] pointer-events-none"></div>
 
