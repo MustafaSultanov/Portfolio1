@@ -89,7 +89,6 @@ export default function HomePages() {
 								</p>
 
 								<div className="flex items-center gap-6 pt-4">
-									{/* iOS-style Glass Button */}
 									<button className="group relative overflow-hidden rounded-full">
 										<div className="absolute inset-0 bg-white/40 dark:bg-white/10 backdrop-blur-md rounded-full border border-white/30 dark:border-white/10 transition-all duration-300 group-hover:bg-white/60 dark:group-hover:bg-white/20"></div>
 										<div className="relative px-8 py-3 text-slate-800 dark:text-white text-sm font-medium">
