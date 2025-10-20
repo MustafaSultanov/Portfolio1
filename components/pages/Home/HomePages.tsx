@@ -96,7 +96,6 @@ export default function HomePages() {
 										</div>
 									</button>
 
-									{/* Minimal Text Button */}
 									<button className="text-blue-700 hover:text-blue-900 dark:text-blue-300 dark:hover:text-white text-sm font-medium transition-colors duration-300 border-b border-blue-500/40 hover:border-blue-700 dark:hover:border-blue-300 pb-1">
 										Download CV
 									</button>
