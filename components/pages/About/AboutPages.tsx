@@ -8,7 +8,6 @@ const AboutPages = () => {
 		<div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#f6f8fb] to-[#eef1f6] dark:from-[#0e1116] dark:via-[#0d1218] dark:to-[#10151c] transition-colors duration-500">
 			<div className="absolute inset-0 backdrop-blur-2xl bg-white/30 dark:bg-[#1a1f25]/40"></div>
 
-			{/* Жумшак жарык чекиттер */}
 			<div className="absolute top-32 right-32 w-[420px] h-[420px] bg-white/50 dark:bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
 			<div className="absolute bottom-32 left-32 w-[420px] h-[420px] bg-white/10 dark:bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
 
