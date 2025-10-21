@@ -35,7 +35,6 @@ export default function HomePages() {
 	return (
 		<div className="bg-gradient-to-br from-white via-slate-100 to-slate-200 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800 text-slate-900 dark:text-white overflow-hidden transition-colors duration-500">
 			<div className="relative">
-				{/* Light blur gradient background */}
 				<div className="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-white/60 via-white/40 to-slate-200/50 dark:from-zinc-900/70 dark:via-zinc-800/60 dark:to-zinc-900/70 pointer-events-none"></div>
 
 				{/* Subtle glowing orbs */}
