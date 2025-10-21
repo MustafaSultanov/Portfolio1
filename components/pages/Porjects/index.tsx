@@ -90,7 +90,6 @@ export default function Projects() {
 					</h1>
 				</div>
 
-				{/* --- Timeline Line --- */}
 				<div className="relative">
 					<div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[1px] bg-gradient-to-b from-blue-500/40 via-purple-500/30 to-transparent"></div>
 
