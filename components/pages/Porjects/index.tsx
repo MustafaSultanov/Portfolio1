@@ -99,10 +99,8 @@ export default function Projects() {
 							className={`relative flex flex-col md:flex-row items-center gap-16 mb-32 ${
 								index % 2 === 0 ? "md:flex-row-reverse" : ""
 							}`}>
-							{/* Node point */}
 							<div className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg shadow-blue-500/30"></div>
 
-							{/* --- Card --- */}
 							<div className="w-full md:w-1/2 group relative overflow-hidden rounded-3xl backdrop-blur-2xl bg-white/40 dark:bg-zinc-800/30 border border-white/20 dark:border-white/10 hover:border-blue-400/40 transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)]">
 								<div className="relative">
 									<Image
