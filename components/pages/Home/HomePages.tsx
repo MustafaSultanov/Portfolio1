@@ -58,11 +58,8 @@ export default function HomePages() {
 								</div>
 
 								<h1 className="text-5xl lg:text-7xl font-light tracking-tight leading-none">
-									<span className="block text-slate-900 dark:text-white">
-										Mustafa
-									</span>
 									<span className="block text-transparent bg-gradient-to-r from-blue-700 to-blue-400 dark:from-blue-400 dark:to-blue-300 bg-clip-text mt-2">
-										Sultanov
+										Mustafa Sultanov
 									</span>
 								</h1>
 							</div>

@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import foto from '../../../public/assets/projects/Orange2.jpeg'
 
 interface Project {
 	title: string;
@@ -11,24 +12,38 @@ interface Project {
 	techStack: string[];
 	githubUrl: string;
 	liveDemoUrl: string;
-	imageSrc: string;
+	imageSrc: any;
 }
 
 const projects: Project[] = [
 	{
-		title: "LMS",
+		title: "Akylman",
 		description:
 			"LMS is a learning management system for managing online and offline training courses.",
-		techStack: ["TypeScript", "Redux", "RTQ", "React Router", "Sass", "RestApi"],
+		techStack: [
+			"TypeScript",
+			"Redux",
+			"RTQ",
+			"React Router",
+			"Sass",
+			"RestApi",
+		],
 		githubUrl: "https://github.com/SultanovMusa/lms",
 		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
-		imageSrc: "/assets/i.webp",
+		imageSrc: foto,
 	},
 	{
 		title: "Aksoft.dev",
 		description:
 			"Aksoft provides services for creating high-tech web apps, websites and mobile apps, focusing on solving business challenges at scale.",
-		techStack: ["TypeScript", "Next.js", "RTQ", "Pages Router", "Sass", "RestApi"],
+		techStack: [
+			"TypeScript",
+			"Next.js",
+			"RTQ",
+			"Pages Router",
+			"Sass",
+			"RestApi",
+		],
 		githubUrl: "https://github.com/SultanovMusa/nextAksoft",
 		liveDemoUrl: "https://aksoft.dev/",
 		imageSrc: "/assets/aksoft.webp",
@@ -37,7 +52,14 @@ const projects: Project[] = [
 		title: "Peak-Space",
 		description:
 			"A social platform simplifying the process of connecting with friends and discovering new content through real-time updates.",
-		techStack: ["TypeScript", "Redux", "RTQ", "React Router", "Sass", "RestApi"],
+		techStack: [
+			"TypeScript",
+			"Redux",
+			"RTQ",
+			"React Router",
+			"Sass",
+			"RestApi",
+		],
 		githubUrl: "https://github.com/SultanovMusa/Peak-Space",
 		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
 		imageSrc: "/assets/peakSpace.png",
@@ -47,10 +69,8 @@ const projects: Project[] = [
 export default function Projects() {
 	return (
 		<section className="relative min-h-screen bg-gradient-to-b from-white via-zinc-100 to-zinc-200 dark:from-zinc-950 dark:via-zinc-900 dark:to-black overflow-hidden">
-			{/* --- iPhone blur overlay --- */}
 			<div className="absolute inset-0 backdrop-blur-3xl bg-white/10 dark:bg-zinc-950/30 pointer-events-none"></div>
 
-			{/* --- subtle gradient glow --- */}
 			<div className="absolute top-32 left-1/3 w-[700px] h-[700px] bg-white/10 dark:bg-blue-900/20 blur-[160px] rounded-full opacity-40"></div>
 
 			<div className="relative z-10 container mx-auto px-6 py-24">
@@ -64,7 +84,7 @@ export default function Projects() {
 					</div>
 
 					<h1 className="text-5xl lg:text-6xl font-light tracking-tight">
-						<span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+						<span className="text-zinc-500 dark:text-zinc-400 text-transparent">
 							Projects
 						</span>
 					</h1>
@@ -79,8 +99,7 @@ export default function Projects() {
 							key={index}
 							className={`relative flex flex-col md:flex-row items-center gap-16 mb-32 ${
 								index % 2 === 0 ? "md:flex-row-reverse" : ""
-							}`}
-						>
+							}`}>
 							{/* Node point */}
 							<div className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg shadow-blue-500/30"></div>
 
@@ -99,15 +118,13 @@ export default function Projects() {
 										<a
 											href={project.githubUrl}
 											target="_blank"
-											className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all"
-										>
+											className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
 											<FaGithub /> Code
 										</a>
 										<a
 											href={project.liveDemoUrl}
 											target="_blank"
-											className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all"
-										>
+											className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
 											<FaArrowUpRightFromSquare /> Live
 										</a>
 									</div>
@@ -126,8 +143,7 @@ export default function Projects() {
 										{project.techStack.map((tech, i) => (
 											<span
 												key={i}
-												className="px-3 py-1 text-sm rounded-full bg-white/40 dark:bg-zinc-700/40 border border-white/20 dark:border-zinc-600/40 backdrop-blur-md"
-											>
+												className="px-3 py-1 text-sm rounded-full bg-white/40 dark:bg-zinc-700/40 border border-white/20 dark:border-zinc-600/40 backdrop-blur-md">
 												{tech}
 											</span>
 										))}
@@ -135,7 +151,6 @@ export default function Projects() {
 								</div>
 							</div>
 
-							{/* Empty side */}
 							<div className="hidden md:block md:w-1/2"></div>
 						</div>
 					))}
