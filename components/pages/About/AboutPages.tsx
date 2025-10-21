@@ -12,7 +12,6 @@ const AboutPages = () => {
 			<div className="absolute top-32 right-32 w-[420px] h-[420px] bg-white/50 dark:bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
 			<div className="absolute bottom-32 left-32 w-[420px] h-[420px] bg-white/10 dark:bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-			{/* 💡 Лампочка (артында, z-0, адаптивдүү) */}
 			<div className="absolute inset-0 z-0 pointer-events-none">
 				<div className="absolute bottom-8 md:block hidden left-0 sm:bottom-12 sm:left-8 md:bottom-16 md:left-12 lg:bottom-20 lg:left-16 rotate-[20deg] animate-pulse duration-[3000ms]">
 					<Image
