@@ -92,8 +92,7 @@ const AboutPages = () => {
 									placeat quas. Eveniet qui animi porro possimus? Hic maiores
 									ducimus, dolor repudiandae accusamus minima blanditiis rem
 									harum consectetur excepturi. Obcaecati esse ipsam repudiandae,
-									fugiat dolorem mollitia officia harum consequuntur animi modi
-									illum quod qui cupiditate?
+				x
 								</p>
 							</div>
 
