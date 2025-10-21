@@ -37,7 +37,6 @@ export default function HomePages() {
 			<div className="relative">
 				<div className="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-white/60 via-white/40 to-slate-200/50 dark:from-zinc-900/70 dark:via-zinc-800/60 dark:to-zinc-900/70 pointer-events-none"></div>
 
-				{/* Subtle glowing orbs */}
 				<div className="absolute top-20 right-20 w-96 h-96 bg-blue-900/40 rounded-full blur-3xl pointer-events-none"></div>
 				<div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-900/40 dark:bg-blue-900/10 rounded-full blur-3xl pointer-events-none"></div>
 
