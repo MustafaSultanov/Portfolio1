@@ -33,12 +33,10 @@ const Sidebar = () => {
 
 	return (
 		<>
-			{/* Page transition */}
 			<AnimatePresence mode="wait">
 				{isRouting && <Transition />}
 			</AnimatePresence>
 
-			{/* Sidebar */}
 			<div className="fixed left-1/2 -translate-x-1/2 bottom-8 z-50">
 				<motion.div
 					initial={{ y: 100, opacity: 0 }}
