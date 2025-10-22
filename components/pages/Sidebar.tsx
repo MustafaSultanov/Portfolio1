@@ -55,7 +55,6 @@ const Sidebar = () => {
 							className="relative cursor-pointer group"
 							onMouseEnter={() => setHoveredIndex(index)}
 							onMouseLeave={() => setHoveredIndex(null)}>
-							{/* Tooltip */}
 							<AnimatePresence>
 								{hoveredIndex === index && (
 									<motion.div
@@ -70,7 +69,6 @@ const Sidebar = () => {
 								)}
 							</AnimatePresence>
 
-							{/* Icon */}
 							<motion.div
 								whileHover={{ scale: 1.15, y: -2 }}
 								whileTap={{ scale: 0.95 }}
