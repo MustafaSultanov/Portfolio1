@@ -20,16 +20,13 @@ const ServiceData = [
 const ModernSkillsPortfolio = () => {
 	return (
 		<div className="min-h-screen bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-500">
-			{/* Subtle Background Glow */}
 			<div className="absolute inset-0 opacity-20 dark:opacity-30">
 				<div className="absolute top-20 left-20 w-64 h-64 bg-blue-200 dark:bg-blue-900/30 rounded-full blur-3xl"></div>
 				<div className="absolute bottom-20 right-20 w-64 h-64 bg-slate-200 dark:bg-slate-800/40 rounded-full blur-3xl"></div>
 			</div>
 
-			{/* Hero Section */}
 			<section className="relative z-10 pt-24 pb-20 px-6">
 				<div className="max-w-7xl mx-auto">
-					{/* Simple Badge */}
 					<div className="flex justify-center mb-12">
 						<div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 transition-colors">
 							<div className="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full animate-pulse"></div>
@@ -39,7 +36,6 @@ const ModernSkillsPortfolio = () => {
 						</div>
 					</div>
 
-					{/* Clean Title */}
 					<div className="text-center space-y-6 mb-16">
 						<h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white transition-colors">
 							Skills & Technologies
@@ -49,7 +45,6 @@ const ModernSkillsPortfolio = () => {
 						</p>
 					</div>
 
-					{/* Simple Stats */}
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
 						{[
 							{ num: "5+", label: "Years Experience" },

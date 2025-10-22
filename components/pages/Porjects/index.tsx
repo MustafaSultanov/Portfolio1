@@ -101,12 +101,10 @@ export default function Projects() {
 							className={`relative flex flex-col md:flex-row ${
 								idx % 2 === 1 ? "md:flex-row-reverse" : ""
 							} items-center gap-12`}>
-							{/* Floating Number */}
 							<div className="absolute -top-12 left-1/2 transform -translate-x-1/2 md:-translate-x-0 md:top-0 md:left-0 text-8xl font-black text-slate-200 dark:text-slate-800 opacity-20">
 								{project.number}
 							</div>
 
-							{/* Image */}
 							<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl group hover:shadow-blue-500/30 transition-shadow duration-700">
 								<Image
 									src={project.imageSrc}
@@ -140,7 +138,6 @@ export default function Projects() {
 								</div>
 							</div>
 
-							{/* Info */}
 							<div className="w-full md:w-1/2 flex flex-col gap-6 p-8 bg-gradient-to-b from-transparent to-slate-50/50 dark:to-slate-900/50 rounded-3xl">
 								<h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
 									{project.title}
@@ -188,7 +185,6 @@ export default function Projects() {
 					))}
 				</div>
 
-				{/* Footer CTA */}
 				<div className="mt-40 text-center">
 					<div className="inline-flex flex-col items-center gap-6 p-12 rounded-3xl bg-gradient-to-br from-purple-100 via-blue-100 to-white dark:from-slate-900 dark:to-slate-800 border border-slate-200 dark:border-slate-700">
 						<div className="text-5xl">🎯</div>
