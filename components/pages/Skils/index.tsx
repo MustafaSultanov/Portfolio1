@@ -64,7 +64,6 @@ const ModernSkillsPortfolio = () => {
 						))}
 					</div>
 
-					{/* Section Title */}
 					<div className="text-center mb-16">
 						<div className="inline-flex items-center gap-3 mb-6">
 							<div className="h-px w-16 bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent"></div>
@@ -80,9 +79,7 @@ const ModernSkillsPortfolio = () => {
 				</div>
 			</section>
 
-			{/* Card Swiper with Image */}
 			<div className="flex flex-col lg:flex-row items-center justify-center gap-12 px-6 pb-20">
-				{/* Swiper Section */}
 				<section className="relative z-10 w-full lg:w-auto">
 					<div className="max-w-md mx-auto">
 						<Swiper
