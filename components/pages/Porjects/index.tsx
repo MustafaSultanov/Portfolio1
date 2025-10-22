@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import foto from '../../../public/assets/projects/Orange2.jpeg'
+import foto from "../../../public/assets/projects/Orange2.jpeg";
 
 interface Project {
 	title: string;
@@ -13,6 +13,8 @@ interface Project {
 	githubUrl: string;
 	liveDemoUrl: string;
 	imageSrc: any;
+	emoji: string;
+	number: string;
 }
 
 const projects: Project[] = [
@@ -31,11 +33,13 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/SultanovMusa/lms",
 		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
 		imageSrc: foto,
+		emoji: "📚",
+		number: "01",
 	},
 	{
 		title: "Aksoft.dev",
 		description:
-			"Aksoft provides services for creating high-tech web apps, websites and mobile apps, focusing on solving business challenges at scale.",
+			"Aksoft provides services for creating high-tech web apps, websites and mobile apps.",
 		techStack: [
 			"TypeScript",
 			"Next.js",
@@ -47,11 +51,13 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/SultanovMusa/nextAksoft",
 		liveDemoUrl: "https://aksoft.dev/",
 		imageSrc: "/assets/aksoft.webp",
+		emoji: "🚀",
+		number: "02",
 	},
 	{
 		title: "Peak-Space",
 		description:
-			"A social platform simplifying the process of connecting with friends and discovering new content through real-time updates.",
+			"A social platform simplifying the process of connecting with friends and discovering new content.",
 		techStack: [
 			"TypeScript",
 			"Redux",
@@ -63,96 +69,165 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/SultanovMusa/Peak-Space",
 		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
 		imageSrc: "/assets/peakSpace.png",
+		emoji: "🌟",
+		number: "03",
 	},
 ];
 
 export default function Projects() {
 	return (
-		<section className="relative min-h-screen bg-gradient-to-b from-white via-zinc-100 to-zinc-200 dark:from-zinc-950 dark:via-zinc-900 dark:to-black overflow-hidden">
-			<div className="absolute inset-0 backdrop-blur-3xl bg-white/10 dark:bg-zinc-950/30 pointer-events-none"></div>
+		<section className="relative bg-white dark:bg-slate-950 py-32 px-6 overflow-hidden">
+			{/* Background Shapes */}
+			<div className="absolute inset-0 pointer-events-none">
+				<div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-tr from-purple-300 to-blue-400 rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
+				<div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-pink-300 to-yellow-400 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
+			</div>
 
-			<div className="absolute top-32 left-1/3 w-[700px] h-[700px] bg-white/10 dark:bg-blue-900/20 blur-[160px] rounded-full opacity-40"></div>
-
-			<div className="relative z-10 container mx-auto px-6 py-24">
-				<div className="text-center mb-24 space-y-4">
-					<div className="flex justify-center items-center gap-3">
-						<div className="w-12 h-px bg-zinc-300/40 dark:bg-zinc-600/50"></div>
-						<span className="text-zinc-500 dark:text-zinc-400 text-sm tracking-widest uppercase">
-							Portfolio Work
-						</span>
-						<div className="w-12 h-px bg-zinc-300/40 dark:bg-zinc-600/50"></div>
-					</div>
-
-					<h1 className="text-5xl lg:text-6xl font-light tracking-tight">
-						<span className="text-zinc-500 dark:text-zinc-400 text-transparent">
-							Projects
-						</span>
+			<div className="relative z-10 max-w-7xl mx-auto space-y-48">
+				{/* Header */}
+				<div className="text-center mb-24">
+					<h1 className="text-6xl md:text-7xl font-extrabold text-slate-900 dark:text-white mb-4">
+						Projects
 					</h1>
+					<p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+						Exploring my work through interactive, creative, and modern web
+						applications.
+					</p>
 				</div>
 
-				<div className="relative">
-					<div className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-[1px] bg-gradient-to-b from-blue-500/40 via-purple-500/30 to-transparent"></div>
-
-					{projects.map((project, index) => (
+				{/* Project Cards */}
+				<div className="flex flex-col gap-40">
+					{projects.map((project, idx) => (
 						<div
-							key={index}
-							className={`relative flex flex-col md:flex-row items-center gap-16 mb-32 ${
-								index % 2 === 0 ? "md:flex-row-reverse" : ""
-							}`}>
-							<div className="absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg shadow-blue-500/30"></div>
+							key={project.number}
+							className={`relative flex flex-col md:flex-row ${
+								idx % 2 === 1 ? "md:flex-row-reverse" : ""
+							} items-center gap-12`}>
+							{/* Floating Number */}
+							<div className="absolute -top-12 left-1/2 transform -translate-x-1/2 md:-translate-x-0 md:top-0 md:left-0 text-8xl font-black text-slate-200 dark:text-slate-800 opacity-20">
+								{project.number}
+							</div>
 
-							<div className="w-full md:w-1/2 group relative overflow-hidden rounded-3xl backdrop-blur-2xl bg-white/40 dark:bg-zinc-800/30 border border-white/20 dark:border-white/10 hover:border-blue-400/40 transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.2)]">
-								<div className="relative">
-									<Image
-										src={project.imageSrc}
-										alt={project.title}
-										width={700}
-										height={400}
-										className="w-full h-[320px] object-cover transition-transform duration-700 group-hover:scale-105"
-									/>
+							{/* Image */}
+							<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl group hover:shadow-blue-500/30 transition-shadow duration-700">
+								<Image
+									src={project.imageSrc}
+									alt={project.title}
+									width={1200}
+									height={600}
+									className="w-full h-[400px] md:h-[500px] object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent"></div>
+								<div className="absolute bottom-6 left-6 text-6xl">
+									{project.emoji}
+								</div>
+								<div className="absolute top-6 right-6 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+									<a
+										href={project.githubUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/90 hover:scale-110 shadow-lg transition-transform">
+										<FaGithub size={20} className="text-slate-900" />
+									</a>
+									<a
+										href={project.liveDemoUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-500 hover:bg-blue-600 hover:scale-110 shadow-lg transition-transform">
+										<FaArrowUpRightFromSquare
+											size={18}
+											className="text-white"
+										/>
+									</a>
+								</div>
+							</div>
 
-									<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-6">
+							{/* Info */}
+							<div className="w-full md:w-1/2 flex flex-col gap-6 p-8 bg-gradient-to-b from-transparent to-slate-50/50 dark:to-slate-900/50 rounded-3xl">
+								<h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+									{project.title}
+								</h2>
+								<p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+									{project.description}
+								</p>
+
+								<div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+									{project.techStack.map((tech, i) => (
+										<div
+											key={i}
+											className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+											<div className="w-2 h-2 rounded-full bg-blue-500"></div>
+											{tech}
+										</div>
+									))}
+								</div>
+
+								<div className="flex justify-between items-center mt-4">
+									<div className="flex gap-4">
 										<a
 											href={project.githubUrl}
 											target="_blank"
-											className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
-											<FaGithub /> Code
+											rel="noopener noreferrer"
+											className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+											<FaGithub size={20} />{" "}
+											<span className="underline text-sm">View Code</span>
 										</a>
 										<a
 											href={project.liveDemoUrl}
 											target="_blank"
-											className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
-											<FaArrowUpRightFromSquare /> Live
+											rel="noopener noreferrer"
+											className="flex items-center gap-2 text-blue-500 hover:text-blue-600 transition-colors">
+											<span className="underline text-sm">Live Demo</span>{" "}
+											<FaArrowUpRightFromSquare size={16} />
 										</a>
 									</div>
-								</div>
-
-								{/* --- Text --- */}
-								<div className="p-6 space-y-4">
-									<h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
-										{project.title}
-									</h2>
-									<p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
-										{project.description}
-									</p>
-
-									<div className="flex flex-wrap gap-3 pt-2">
-										{project.techStack.map((tech, i) => (
-											<span
-												key={i}
-												className="px-3 py-1 text-sm rounded-full bg-white/40 dark:bg-zinc-700/40 border border-white/20 dark:border-zinc-600/40 backdrop-blur-md">
-												{tech}
-											</span>
-										))}
+									<div className="text-xs text-slate-400 dark:text-slate-600 font-mono">
+										{project.number} / 03
 									</div>
 								</div>
 							</div>
-
-							<div className="hidden md:block md:w-1/2"></div>
 						</div>
 					))}
 				</div>
+
+				{/* Footer CTA */}
+				<div className="mt-40 text-center">
+					<div className="inline-flex flex-col items-center gap-6 p-12 rounded-3xl bg-gradient-to-br from-purple-100 via-blue-100 to-white dark:from-slate-900 dark:to-slate-800 border border-slate-200 dark:border-slate-700">
+						<div className="text-5xl">🎯</div>
+						<h3 className="text-3xl font-bold text-slate-900 dark:text-white">
+							Interested in collaboration?
+						</h3>
+						<p className="text-slate-600 dark:text-slate-400 max-w-md">
+							Let s create something extraordinary together
+						</p>
+						<a
+							href="https://github.com/SultanovMusa"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="relative group inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl font-semibold overflow-hidden">
+							<span className="relative z-10">Explore More Projects</span>
+							<div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
+						</a>
+					</div>
+				</div>
 			</div>
+
+			<style jsx>{`
+				@keyframes pulse-slow {
+					0%,
+					100% {
+						transform: scale(1);
+						opacity: 0.3;
+					}
+					50% {
+						transform: scale(1.05);
+						opacity: 0.5;
+					}
+				}
+				.animate-pulse-slow {
+					animation: pulse-slow 6s infinite;
+				}
+			`}</style>
 		</section>
 	);
 }

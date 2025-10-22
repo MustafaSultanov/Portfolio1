@@ -80,8 +80,8 @@ const Header = () => {
 			<header
 				className={`fixed top-0 w-full z-50 transition-all duration-500 ${
 					isScrolled
-						? "bg-white/10 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-slate-200/50 dark:border-slate-800/50"
-						: "bg-[rgba(28,26,26,0.9)]"
+						? " bg-transparent backdrop-blur-xl shadow-lg shadow-black/5 border-b border-slate-200/50 dark:border-slate-800/50"
+						: "bg-transparent backdrop-blur-xl"
 				}`}>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center justify-between h-20">
@@ -145,7 +145,11 @@ const Header = () => {
 													locale === language.code
 														? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
 														: "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
-												} ${index !== languages.length - 1 ? "border-b border-slate-100 dark:border-slate-800" : ""}`}
+												} ${
+													index !== languages.length - 1
+														? "border-b border-slate-100 dark:border-slate-800"
+														: ""
+												}`}
 												onClick={() => switchLanguage(language.code)}>
 												<div className="mr-3 w-6 h-4 relative overflow-hidden rounded-sm">
 													<Image
@@ -221,7 +225,7 @@ const Header = () => {
 							? "max-h-screen opacity-100 visible"
 							: "max-h-0 opacity-0 invisible"
 					}`}>
-					<div className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 shadow-lg">
+					<div className="bg-white dark:bg-transparent backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 shadow-lg">
 						<div className="container mx-auto px-4 sm:px-6 py-6 space-y-6">
 							{/* Mobile Language Switcher */}
 							<div>
@@ -285,7 +289,9 @@ const Header = () => {
 												href={social.href}
 												className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 group">
 												<IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
-												<span className="text-xs font-medium">{social.label}</span>
+												<span className="text-xs font-medium">
+													{social.label}
+												</span>
 											</Link>
 										);
 									})}
@@ -295,9 +301,6 @@ const Header = () => {
 					</div>
 				</div>
 			</header>
-
-			{/* Spacer */}
-			<div className="h-20"></div>
 		</>
 	);
 };

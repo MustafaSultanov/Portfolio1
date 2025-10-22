@@ -33,10 +33,8 @@ export default function HomePages() {
 	};
 
 	return (
-		<div className="bg-gradient-to-br from-white via-slate-100 to-slate-200 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800 text-slate-900 dark:text-white overflow-hidden transition-colors duration-500">
+		<div className="min-h-screen bg-gradient-to-br from-white via-slate-100 to-slate-200 dark:from-slate-950 dark:via-slate-950 dark:to-slate-950 text-slate-900 dark:text-white relative overflow-hidden transition-colors duration-500">
 			<div className="relative">
-				<div className="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-white/60 via-white/40 to-slate-200/50 dark:from-zinc-900/70 dark:via-zinc-800/60 dark:to-zinc-900/70 pointer-events-none"></div>
-
 				<div className="absolute top-20 right-20 w-96 h-96 bg-blue-900/40 rounded-full blur-3xl pointer-events-none"></div>
 				<div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-900/40 dark:bg-blue-900/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -55,8 +53,8 @@ export default function HomePages() {
 									</span>
 								</div>
 
-								<h1 className="text-5xl lg:text-7xl font-light tracking-tight leading-none">
-									<span className="block text-transparent bg-gradient-to-r from-blue-700 to-blue-400 dark:from-blue-400 dark:to-blue-300 bg-clip-text mt-2">
+								<h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-none cursor-pointer relative group">
+									<span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-black dark:from-blue-400 dark:to-blue-100 shine-text mt-2">
 										Mustafa Sultanov
 									</span>
 								</h1>
@@ -101,6 +99,7 @@ export default function HomePages() {
 					<div className="absolute bottom-0 left-0 right-0">
 						<ProfileShape />
 					</div>
+					
 				</main>
 			</div>
 
@@ -115,6 +114,26 @@ export default function HomePages() {
 				}
 				.animate-spin-slow {
 					animation: spin-slow 20s linear infinite;
+				}
+			`}</style>
+			<style jsx>{`
+				@keyframes shine {
+					0% {
+						background-position: 0 0;
+					}
+					60% {
+						background-position: 600px 0;
+					}
+					100% {
+						background-position: 700px 0;
+					}
+				}
+				.shine-text {
+					background-size: 600% auto;
+					animation: shine 40s linear infinite;
+				}
+				.shine-text:hover {
+					animation: none;
 				}
 			`}</style>
 		</div>
