@@ -84,7 +84,6 @@ export default function Projects() {
 			</div>
 
 			<div className="relative z-10 max-w-7xl mx-auto space-y-48">
-				{/* Header */}
 				<div className="text-center mb-24">
 					<h1 className="text-6xl md:text-7xl font-extrabold text-slate-900 dark:text-white mb-4">
 						Projects
@@ -95,7 +94,6 @@ export default function Projects() {
 					</p>
 				</div>
 
-				{/* Project Cards */}
 				<div className="flex flex-col gap-40">
 					{projects.map((project, idx) => (
 						<div
