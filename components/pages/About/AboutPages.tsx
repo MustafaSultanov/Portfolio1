@@ -37,7 +37,6 @@ const AboutPages = () => {
 			<div className="relative z-10 flex items-center min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6">
 				<div className="container mx-auto max-w-7xl">
 					<div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-						{/* Сол жак — текст */}
 						<div className="flex-1 space-y-6 sm:space-y-8 max-w-2xl w-full">
 							<div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
 								<div className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-blue-500 to-blue-400"></div>
