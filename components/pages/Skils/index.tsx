@@ -111,7 +111,6 @@ const ModernSkillsPortfolio = () => {
 										</div>
 
 										<div className="relative h-full flex flex-col items-center justify-center p-12 text-center">
-											{/* Big Emoji with Glow */}
 											<div className="mb-10 relative">
 												<div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-2xl"></div>
 												<div className="relative text-8xl drop-shadow-lg">
@@ -119,12 +118,10 @@ const ModernSkillsPortfolio = () => {
 												</div>
 											</div>
 
-											{/* Title */}
 											<h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-3 transition-colors">
 												{item.title}
 											</h3>
 
-											{/* Simple Dots */}
 											<div className="flex gap-2.5 mt-8">
 												<div className="w-2 h-2 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
 												<div className="w-2 h-2 bg-slate-400 dark:bg-slate-700 rounded-full"></div>
@@ -132,10 +129,8 @@ const ModernSkillsPortfolio = () => {
 											</div>
 										</div>
 
-										{/* Subtle Highlight on Top */}
 										<div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent"></div>
 
-										{/* Bottom Accent */}
 										<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-50"></div>
 									</div>
 								</SwiperSlide>
