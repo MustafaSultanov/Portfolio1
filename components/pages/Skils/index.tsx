@@ -137,7 +137,6 @@ const ModernSkillsPortfolio = () => {
 							))}
 						</Swiper>
 
-						{/* Simple Instruction */}
 						<div className="text-center mt-8">
 							<p className="text-slate-500 dark:text-slate-600 text-sm font-medium">
 								👆 Swipe to explore more
@@ -146,13 +145,10 @@ const ModernSkillsPortfolio = () => {
 					</div>
 				</section>
 
-				{/* Image Section */}
 				<section className="relative w-full max-w-md lg:max-w-lg">
 					<div className="relative group">
-						{/* Glow Effect Behind Image */}
 						<div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-purple-200 dark:from-blue-900/30 dark:to-purple-900/30 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
 
-						{/* Image Container */}
 						<div className="relative bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-200 dark:border-slate-800 rounded-3xl p-6 group-hover:border-slate-300 dark:group-hover:border-slate-700 transition-all">
 							<Image
 								className="w-full h-auto rounded-2xl group-hover:scale-105 transition-transform duration-500"
@@ -167,7 +163,6 @@ const ModernSkillsPortfolio = () => {
 				</section>
 			</div>
 
-			{/* Simple Footer CTA */}
 			<section className="relative z-10 pb-24 px-6">
 				<div className="max-w-4xl mx-auto text-center">
 					<div className="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/50 rounded-3xl p-10 hover:border-slate-300 dark:hover:border-slate-700 transition-all">
