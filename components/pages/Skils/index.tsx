@@ -99,7 +99,6 @@ const ModernSkillsPortfolio = () => {
 							{ServiceData.map((item, index) => (
 								<SwiperSlide key={index}>
 									<div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-2xl transition-all">
-										{/* Minimal Pattern */}
 										<div className="absolute inset-0 opacity-[0.03] dark:opacity-5">
 											<div
 												className="absolute inset-0"
@@ -111,7 +110,6 @@ const ModernSkillsPortfolio = () => {
 												<div className="text-slate-900 dark:text-white"></div>
 										</div>
 
-										{/* Content */}
 										<div className="relative h-full flex flex-col items-center justify-center p-12 text-center">
 											{/* Big Emoji with Glow */}
 											<div className="mb-10 relative">
