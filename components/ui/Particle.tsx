@@ -1,7 +1,4 @@
 
-
-// 	return (
-// 		<div className="container">
 // 			<Particles
 // 				className="h-screen"
 // 				init={particlesInit}
