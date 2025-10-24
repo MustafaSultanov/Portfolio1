@@ -1,10 +1,5 @@
 
 
-// const Particle = () => {
-// 	const particlesInit = useCallback(async (engine: any) => {
-// 		await loadFull(engine);
-// 	}, []);
-
 // 	const particlesLoaded = useCallback(async () => {}, []);
 // 	return (
 // 		<div className="container">
