@@ -52,12 +52,9 @@ export default function HomePages() {
 										Portfolio 2024
 									</span>
 								</div>
-
-								<h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-none cursor-pointer relative group">
-									<span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-black dark:from-blue-400 dark:to-blue-100 shine-text mt-2">
-										Mustafa Sultanov
-									</span>
-								</h1>
+								<div id="logo">
+									<h1 id="li">Mustafa Sultanov</h1>
+								</div>
 							</div>
 
 							<div className="space-y-2">
@@ -75,7 +72,7 @@ export default function HomePages() {
 							<div className="max-w-md space-y-6">
 								<p
 									ref={textRef}
-									className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg max-w-xl">
+									className="text-black dark:text-slate-300 leading-relaxed text-lg max-w-xl">
 									{wrapLetters(
 										"Here you will find my projects and experience in frontend development. I invite you to explore my work and learn more about my professional journey."
 									)}
@@ -99,7 +96,6 @@ export default function HomePages() {
 					<div className="absolute bottom-0 left-0 right-0">
 						<ProfileShape />
 					</div>
-					
 				</main>
 			</div>
 
@@ -119,20 +115,21 @@ export default function HomePages() {
 			<style jsx>{`
 				@keyframes shine {
 					0% {
-						background-position: 0 0;
+						background-position: 0% center;
 					}
 					60% {
-						background-position: 600px 0;
+						background-position: 100% center;
 					}
 					100% {
-						background-position: 700px 0;
+						background-position: 200% center;
 					}
 				}
-				.shine-text {
-					background-size: 600% auto;
-					animation: shine 40s linear infinite;
+
+				.animate-shine {
+					animation: shine 8s ease-in-out infinite;
 				}
-				.shine-text:hover {
+
+				.hover\\:animate-none:hover {
 					animation: none;
 				}
 			`}</style>

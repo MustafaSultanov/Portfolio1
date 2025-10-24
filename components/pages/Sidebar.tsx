@@ -56,13 +56,18 @@ const Sidebar = () => {
 							<AnimatePresence>
 								{hoveredIndex === index && (
 									<motion.div
-										initial={{ opacity: 0, y: 10, scale: 0.8 }}
-										animate={{ opacity: 1, y: 0, scale: 1 }}
-										exit={{ opacity: 0, y: 5, scale: 0.9 }}
-										transition={{ duration: 0.2 }}
-										className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-slate-900/95 backdrop-blur-sm text-white text-sm font-medium rounded-lg whitespace-nowrap shadow-xl border border-blue-400/30 z-50">
-										{link.name}
-										<div className="absolute top-full left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-900/95 rotate-45 border-r border-b border-blue-400/30" />
+										initial={{ opacity: 0, scale: 0.9, y: 5 }}
+										animate={{ opacity: 1, scale: 1, y: 0 }}
+										exit={{ opacity: 0, scale: 0.95, y: 5 }}
+										transition={{ duration: 0.2, ease: "easeOut" }}
+										className="absolute bottom-full  -right-[10px] -translate-x-1/2 mb-3 pointer-events-none">
+										<div className="relative px-4 py-2 bg-slate-900/95 backdrop-blur-sm text-white text-sm font-medium rounded-lg whitespace-nowrap shadow-xl border border-blue-400/30">
+											{link.name}
+											{/* Tooltip arrow */}
+											<div className="absolute top-full left-1/2 -translate-x-1/2">
+												<div className="w-3 h-3 bg-slate-900/95 rotate-45 border-r border-b border-blue-400/30" />
+											</div>
+										</div>
 									</motion.div>
 								)}
 							</AnimatePresence>
@@ -73,14 +78,14 @@ const Sidebar = () => {
 								transition={{ type: "spring", stiffness: 400, damping: 18 }}
 								className={`p-3 rounded-xl transition-all duration-300 ${
 									isActive === link.link
-										? "bg-blue-600/25 shadow-[0_0_20px_rgba(37,99,235,0.5)]"
-										: "hover:bg-white/10"
+										? "bg-blue-600/25 "
+										: "dark:hover:bg-white/10 hover:bg-blue-600/25"
 								}`}>
 								<link.icon
 									className={`w-7 h-7 transition-colors duration-300 ${
 										isActive === link.link
-											? "text-blue-500"
-											: "text-gray-400 group-hover:text-white"
+											? "text-blue-500 "
+											: "text-black dark:text-white dark-hover:text-white hover-none"
 									}`}
 								/>
 							</motion.div>
