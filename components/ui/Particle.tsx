@@ -1,6 +1,5 @@
 
 
-// 	const particlesLoaded = useCallback(async () => {}, []);
 // 	return (
 // 		<div className="container">
 // 			<Particles
