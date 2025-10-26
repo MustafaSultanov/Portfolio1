@@ -22,7 +22,7 @@ const projects: Project[] = [
 	{
 		title: "Akylman",
 		description:
-			"LMS is a learning management system for managing ",
+			"LMS is a learning management system for ",
 		techStack: [
 			"TypeScript",
 			"Redux",
