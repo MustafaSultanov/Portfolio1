@@ -4,7 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import foto from "../../../public/assets/projects/Orange2.jpeg";
+import aksoft from "../../../public/assets/projects/aksoft.dev.png";
+import akylman from "../../../public/assets/projects/akulman.edu.kg.png";
 
 interface Project {
 	title: string;
@@ -32,7 +33,7 @@ const projects: Project[] = [
 		],
 		githubUrl: "https://github.com/SultanovMusa/lms",
 		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
-		imageSrc: foto,
+		imageSrc: aksoft,
 		emoji: "📚",
 		number: "01",
 	},
@@ -50,7 +51,7 @@ const projects: Project[] = [
 		],
 		githubUrl: "https://github.com/SultanovMusa/nextAksoft",
 		liveDemoUrl: "https://aksoft.dev/",
-		imageSrc: "/assets/aksoft.webp",
+		imageSrc: akylman,
 		emoji: "🚀",
 		number: "02",
 	},
@@ -106,18 +107,22 @@ export default function Projects() {
 							</div>
 
 							<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl group hover:shadow-blue-500/30 transition-shadow duration-700">
-								<Image
-									src={project.imageSrc}
-									alt={project.title}
-									width={1200}
-									height={600}
-									className="w-full h-[400px] md:h-[500px] object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
-								/>
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent"></div>
-								<div className="absolute bottom-6 left-6 text-6xl">
+								<div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+									<Image
+										src={project.imageSrc}
+										alt={project.title}
+										width={1200}
+										height={1200}
+										className="w-full h-auto min-h-full object-cover object-top 
+               transition-transform duration-[2000ms] ease-linear 
+               group-hover:-translate-y-[calc(100%-400px)] md:group-hover:-translate-y-[calc(100%-500px)]"
+									/>
+								</div>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none"></div>
+								<div className="absolute bottom-6 left-6 text-6xl z-10">
 									{project.emoji}
 								</div>
-								<div className="absolute top-6 right-6 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+								<div className="absolute top-6 right-6 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
 									<a
 										href={project.githubUrl}
 										target="_blank"

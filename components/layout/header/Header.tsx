@@ -97,7 +97,7 @@ const Header = () => {
 							</div>
 							<div className="hidden sm:block">
 								<h1 className="text-lg font-semibold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-									Mustafa
+									Mustafaw
 								</h1>
 								<p className="text-xs text-slate-500 dark:text-slate-400 -mt-0.5">
 									Full Stack Developer
