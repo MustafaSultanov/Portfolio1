@@ -1,15 +1,14 @@
 import Image from "next/image";
 import React from "react";
-import AboutPhoto from "../../../public/assets/webdev.svg";
+import AboutPhoto from "../../../public/assets/full-stack-web-developer (1).svg";
 import photo from "../../../public/assets/bulb.png";
 
 const AboutPages = () => {
 	return (
 		<div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#f6f8fb] to-[#eef1f6] dark:from-[#0e1116] dark:via-[#0d1218] dark:to-[#10151c] transition-colors duration-500">
-			<div className="absolute inset-0 backdrop-blur-2xl bg-white/30 dark:bg-[#1a1f25]/40"></div>
 
-			<div className="absolute top-32 right-32 w-[420px] h-[420px] bg-white/50 dark:bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
-			<div className="absolute bottom-32 left-32 w-[420px] h-[420px] bg-white/10 dark:bg-white/10 rounded-full blur-[120px] pointer-events-none"></div>
+			<div className="absolute top-32 right-32 w-[420px] h-[420px] bg-blue-900/40    dark:bg-blue-900/10  rounded-full blur-[120px] pointer-events-none"></div>
+			<div className="absolute bottom-32 left-32 w-[420px] h-[420px] bg-blue-900/40  dark:bg-blue-900/10  rounded-full blur-[120px] pointer-events-none"></div>
 
 			<div className="absolute inset-0 z-0 pointer-events-none">
 				<div className="absolute bottom-8 md:block hidden left-0 sm:bottom-12 sm:left-8 md:bottom-16 md:left-12 lg:bottom-20 lg:left-16 rotate-[20deg] animate-pulse duration-[3000ms]">
@@ -22,7 +21,7 @@ const AboutPages = () => {
 						className="opacity-70 w-[120px] sm:w-[160px] md:w-[200px] lg:w-[260px]"
 					/>
 				</div>
-				<div className="absolute md:hidden flex  top-[20px] right-4 sm:top-12 sm:right-8 md:top-16 md:left-12 lg:bottom-20 lg:right-16 -rotate-12 animate-pulse duration-[3000ms]">
+				<div className="absolute md:hidden flex  top-[20px] right-10 sm:top-12 sm:right-8 md:top-16 md:left-12 lg:bottom-20 lg:right-16 -rotate-12 animate-pulse duration-[3000ms]">
 					<Image
 						src={photo}
 						alt="bulb"
@@ -54,7 +53,7 @@ const AboutPages = () => {
 								<div className="w-16 sm:w-20 md:w-24 h-px bg-gradient-to-r from-blue-500 via-gray-300 to-transparent dark:via-gray-500"></div>
 							</div>
 
-							<div className="max-w-full sm:max-w-md space-y-4 sm:space-y-6 backdrop-blur-md bg-white/40 dark:bg-[#1a1f25]/60 border border-white/40 dark:border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+							<div className="max-w-full sm:max-w-md space-y-4 sm:space-y-6 backdrop-blur-xl bg-bg-transparent  border border-white/40 dark:border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 md:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
 								<p className="text-slate-700 dark:text-slate-200 leading-relaxed text-base sm:text-lg">
 									I build elegant, scalable web interfaces with modern
 									<span className="text-blue-600 dark:text-blue-400 font-semibold">
@@ -102,7 +101,7 @@ const AboutPages = () => {
 								].map((item, index) => (
 									<div
 										key={index}
-										className="backdrop-blur-xl bg-white/40 dark:bg-[#1a1f25]/60 border border-white/40 dark:border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)]">
+										className="backdrop-blur-xl bg-bg-transparent border border-white/40 dark:border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
 										<div className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400">
 											{item.value}
 										</div>

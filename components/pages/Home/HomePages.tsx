@@ -3,9 +3,11 @@ import React, { useEffect, useRef } from "react";
 import ProfileShape from "../ProfileShape";
 import TechRotator from "@/components/ui/TechRotator/TechRotator";
 import { gsap } from "gsap";
+import { useTranslations } from "next-intl";
 
 export default function HomePages() {
 	const textRef = useRef<HTMLParagraphElement>(null);
+	const t = useTranslations("Home");
 
 	useEffect(() => {
 		if (textRef.current) {
@@ -53,14 +55,14 @@ export default function HomePages() {
 									</span>
 								</div>
 								<div id="logo">
-									<h1 id="li">Mustafa Sultanov</h1>
+									<h1 id="li">{t("lastName")}</h1>
 								</div>
 							</div>
 
 							<div className="space-y-2">
 								<div className="flex items-center gap-3">
 									<p className="text-xl text-blue-700 dark:text-blue-200 font-light">
-										Frontend Developer
+										{t("frontend")}
 									</p>
 
 									<TechRotator />
@@ -69,25 +71,23 @@ export default function HomePages() {
 								<div className="w-24 h-px bg-gradient-to-r from-blue-500/70 via-blue-400/40 to-transparent"></div>
 							</div>
 
-							<div className="max-w-md space-y-6">
+							<div className="max-w-[460px] space-y-6">
 								<p
 									ref={textRef}
-									className="text-black dark:text-slate-300 leading-relaxed text-lg max-w-xl">
-									{wrapLetters(
-										"Here you will find my projects and experience in frontend development. I invite you to explore my work and learn more about my professional journey."
-									)}
+									className="text-black dark:text-slate-300 leading-relaxed text-lg max-w-xl whitespace-pre-line">
+									{wrapLetters(`${t("text")}`)}
 								</p>
 
 								<div className="flex items-center gap-6 pt-4">
-									<button className="group relative overflow-hidden rounded-full">
+									<button className="group relative overflow-hidden rounded-full cursor-pointer">
 										<div className="absolute inset-0 bg-white/40 dark:bg-white/10 backdrop-blur-md rounded-full border border-white/30 dark:border-white/10 transition-all duration-300 group-hover:bg-white/60 dark:group-hover:bg-white/20"></div>
 										<div className="relative px-8 py-3 text-slate-800 dark:text-white text-sm font-medium">
-											View Projects
+											{t("projectBtn")}
 										</div>
 									</button>
 
 									<button className="text-blue-700 hover:text-blue-900 dark:text-blue-300 dark:hover:text-white text-sm font-medium transition-colors duration-300 border-b border-blue-500/40 hover:border-blue-700 dark:hover:border-blue-300 pb-1">
-										Download CV
+										{t("rezumeText")}
 									</button>
 								</div>
 							</div>

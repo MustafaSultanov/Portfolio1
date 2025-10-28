@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import aksoft from "../../../public/assets/projects/aksoft.dev.png";
 import akylman from "../../../public/assets/projects/akulman.edu.kg.png";
+import { motion } from "framer-motion";
 
 interface Project {
 	title: string;
@@ -14,7 +15,6 @@ interface Project {
 	githubUrl: string;
 	liveDemoUrl: string;
 	imageSrc: any;
-	emoji: string;
 	number: string;
 }
 
@@ -34,7 +34,6 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/SultanovMusa/lms",
 		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
 		imageSrc: aksoft,
-		emoji: "📚",
 		number: "01",
 	},
 	{
@@ -52,7 +51,6 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/SultanovMusa/nextAksoft",
 		liveDemoUrl: "https://aksoft.dev/",
 		imageSrc: akylman,
-		emoji: "🚀",
 		number: "02",
 	},
 	{
@@ -70,7 +68,6 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/SultanovMusa/Peak-Space",
 		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
 		imageSrc: "/assets/peakSpace.png",
-		emoji: "🌟",
 		number: "03",
 	},
 ];
@@ -78,7 +75,6 @@ const projects: Project[] = [
 export default function Projects() {
 	return (
 		<section className="relative bg-white dark:bg-slate-950 py-32 px-6 overflow-hidden">
-			{/* Background Shapes */}
 			<div className="absolute inset-0 pointer-events-none">
 				<div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-tr from-purple-300 to-blue-400 rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
 				<div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-pink-300 to-yellow-400 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
@@ -106,41 +102,20 @@ export default function Projects() {
 								{project.number}
 							</div>
 
-							<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl group hover:shadow-blue-500/30 transition-shadow duration-700">
-								<div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+							<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl transition-shadow duration-700 group">
+								<motion.div
+									className="relative w-full h-[300px] overflow-hidden"
+									whileHover={{ y: -200 }} // px менен жазуу жакшы
+									transition={{ duration: 2, ease: "easeInOut" }}>
 									<Image
 										src={project.imageSrc}
 										alt={project.title}
-										width={1200}
-										height={1200}
-										className="w-full h-auto min-h-full object-cover object-top 
-               transition-transform duration-[2000ms] ease-linear 
-               group-hover:-translate-y-[calc(100%-400px)] md:group-hover:-translate-y-[calc(100%-500px)]"
+										fill // fill колдонсоңуз, object-cover менен автоматтык туура болот
+										className="object-cover object-top min-h-screen"
+										sizes="(max-width: 768px) 100vw, 50vw"
 									/>
-								</div>
+								</motion.div>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none"></div>
-								<div className="absolute bottom-6 left-6 text-6xl z-10">
-									{project.emoji}
-								</div>
-								<div className="absolute top-6 right-6 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-									<a
-										href={project.githubUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/90 hover:scale-110 shadow-lg transition-transform">
-										<FaGithub size={20} className="text-slate-900" />
-									</a>
-									<a
-										href={project.liveDemoUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-500 hover:bg-blue-600 hover:scale-110 shadow-lg transition-transform">
-										<FaArrowUpRightFromSquare
-											size={18}
-											className="text-white"
-										/>
-									</a>
-								</div>
 							</div>
 
 							<div className="w-full md:w-1/2 flex flex-col gap-6 p-8 bg-gradient-to-b from-transparent to-slate-50/50 dark:to-slate-900/50 rounded-3xl">
@@ -186,28 +161,8 @@ export default function Projects() {
 									</div>
 								</div>
 							</div>
-						</divww>
+						</div>
 					))}
-				</div>
-
-				<div className="mt-40 text-center">
-					<div className="inline-flex flex-col items-center gap-6 p-12 rounded-3xl bg-gradient-to-br from-purple-100 via-blue-100 to-white dark:from-slate-900 dark:to-slate-800 border border-slate-200 dark:border-slate-700">
-						<div className="text-5xl">🎯</div>
-						<h3 className="text-3xl font-bold text-slate-900 dark:text-white">
-							Interested in collaboration?
-						</h3>
-						<p className="text-slate-600 dark:text-slate-400 max-w-md">
-							Let s create something extraordinary together
-						</p>
-						<a
-							href="https://github.com/SultanovMusa"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="relative group inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl font-semibold overflow-hidden">
-							<span className="relative z-10">Explore More Projects</span>
-							<div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-2xl"></div>
-						</a>
-					</div>
 				</div>
 			</div>
 
