@@ -10,29 +10,6 @@ const AboutPages = () => {
 			<div className="absolute top-32 right-32 w-[420px] h-[420px] bg-blue-900/40    dark:bg-blue-900/10  rounded-full blur-[120px] pointer-events-none"></div>
 			<div className="absolute bottom-32 left-32 w-[420px] h-[420px] bg-blue-900/40  dark:bg-blue-900/10  rounded-full blur-[120px] pointer-events-none"></div>
 
-			<div className="absolute inset-0 z-0 pointer-events-none">
-				<div className="absolute bottom-8 md:block hidden left-0 sm:bottom-12 sm:left-8 md:bottom-16 md:left-12 lg:bottom-20 lg:left-16 rotate-[20deg] animate-pulse duration-[3000ms]">
-					<Image
-						src={photo}
-						alt="bulb"
-						priority={true}
-						width={260}
-						height={260}
-						className="opacity-70 w-[120px] sm:w-[160px] md:w-[200px] lg:w-[260px]"
-					/>
-				</div>
-				<div className="absolute md:hidden flex  top-[20px] right-10 sm:top-12 sm:right-8 md:top-16 md:left-12 lg:bottom-20 lg:right-16 -rotate-12 animate-pulse duration-[3000ms]">
-					<Image
-						src={photo}
-						alt="bulb"
-						priority={true}
-						width={260}
-						height={260}
-						className="opacity-70 w-[120px] sm:w-[160px] md:w-[200px] lg:w-[260px]"
-					/>
-				</div>
-			</div>
-
 			<div className="relative z-10 flex items-center min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6">
 				<div className="container mx-auto max-w-7xl">
 					<div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16">
