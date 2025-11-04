@@ -130,7 +130,6 @@ const ModernSkillsPortfolio = () => {
 						})}
 					</div>
 
-					{/* Right: Swiper */}
 					<div className="order-1 lg:order-2">
 						<Swiper
 							effect="cards"
