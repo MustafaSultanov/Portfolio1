@@ -6,6 +6,8 @@ import { FaGithub } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import aksoft from "../../../public/assets/projects/aksoft.dev.png";
 import akylman from "../../../public/assets/projects/akulman.edu.kg.png";
+import astro from "../../../public/assets/projects/astro.png";
+import nefashion from "../../../public/assets/projects/nefashion.png";
 import { motion } from "framer-motion";
 
 interface Project {
@@ -16,65 +18,64 @@ interface Project {
 	liveDemoUrl: string;
 	imageSrc: any;
 	number: string;
+	// 💡 Сүрөттүн чыныгы бийиктиги (пиксел менен)
+	fullHeight: number;
 }
 
 const projects: Project[] = [
 	{
-		title: "Akylman",
+		title: "Aksoft",
 		description:
-			"LMS is a learning management system for ",
-		techStack: [
-			"TypeScript",
-			"Redux",
-			"RTQ",
-			"React Router",
-			"Sass",
-			"RestApi",
-		],
+			"Aksoft — бул IT компания, үч демилгечи тарабынан негизделген жана инновациялык веб жана мобилдик чечимдерди түзөт. Биз талантка жана практикалык жакындоого баа берип, көйгөйлөрдү мүмкүнчүлүктөргө айландырабыз жана бизнеске санариптешүүдө жардам беребиз.",
+		techStack: ["TypeScript", "Next js", "Scss"],
 		githubUrl: "https://github.com/SultanovMusa/lms",
-		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
+		liveDemoUrl: "https://aksoft.dev/",
 		imageSrc: aksoft,
 		number: "01",
+		fullHeight: 2180, // Сүрөттүн чыныгы бийиктигин көрсөтүңүз
 	},
 	{
-		title: "Aksoft.dev",
+		title: "Akylman",
 		description:
-			"Aksoft provides services for creating high-tech web apps, websites and mobile apps.",
-		techStack: [
-			"TypeScript",
-			"Next.js",
-			"RTQ",
-			"Pages Router",
-			"Sass",
-			"RestApi",
-		],
+			"«Акылман» Президенттик лицейи 2023-жылдан бери интеллектуалдык, илимий жана чыгармачыл потенциалдуу таланттуу балдарды окутуп, XXI кылымдын чакырыктарына ылайыктуу кеңири билим берүү тажрыйбасын сунуштайт.",
+		techStack: ["TypeScript", "Next.js", "Tailwind css", "i18n", "Sass"],
 		githubUrl: "https://github.com/SultanovMusa/nextAksoft",
-		liveDemoUrl: "https://aksoft.dev/",
+		liveDemoUrl: "https://akylman.edu.kg/",
 		imageSrc: akylman,
 		number: "02",
+		fullHeight: 1500, // Сүрөттүн чыныгы бийиктигин көрсөтүңүз
 	},
 	{
-		title: "Peak-Space",
+		title: "Sultanov",
 		description:
-			"A social platform simplifying the process of connecting with friends and discovering new content.",
-		techStack: [
-			"TypeScript",
-			"Redux",
-			"RTQ",
-			"React Router",
-			"Sass",
-			"RestApi",
-		],
+			"Sultanov — көп жылдык тажрыйбасы бар эмерек өндүрүүчү жана сатуу компаниясы. Биз кардарларыбыз үчүн кооз, бышык жана функционалдык эмеректерди сунуштайбыз.",
+		techStack: ["TypeScript", "Astro", "Css"],
 		githubUrl: "https://github.com/SultanovMusa/Peak-Space",
-		liveDemoUrl: "https://lms-eta-black.vercel.app/courses",
-		imageSrc: "/assets/peakSpace.png",
+		liveDemoUrl: "https://furniture-omega-seven.vercel.app/",
+		imageSrc: astro,
 		number: "03",
+		fullHeight: 2200,
+	},
+	{
+		title: "Nefashion",
+		description:
+			"NEFASHION — 2018-жылы негизделген профессионалдык тигүү компаниясы. Биз кыз-келиндердин кийимдерин нөлдөн тартып жасап, өндүрүштүн бардык этаптарын аткарабыз. Компания 3 өндүрүштүк цехке ээ жана ар бир буюм жогорку сапат стандарттарына жооп берет.",
+		techStack: ["TypeScript", "Next js", "Scss"],
+		githubUrl: "https://github.com/SultanovMusa/Peak-Space",
+		liveDemoUrl: "https://nefashion.vercel.app/",
+		imageSrc: nefashion,
+		number: "03",
+		fullHeight: 1800,
 	},
 ];
+
+// Контейнердин туруктуу бийиктиги
+const CONTAINER_HEIGHT = 300;
 
 export default function Projects() {
 	return (
 		<section className="relative bg-white dark:bg-slate-950 py-32 px-6 overflow-hidden">
+			{/* ... (башка элементтер) */}
 			<div className="absolute inset-0 pointer-events-none">
 				<div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-tr from-purple-300 to-blue-400 rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
 				<div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-pink-300 to-yellow-400 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
@@ -104,28 +105,33 @@ export default function Projects() {
 
 							<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl transition-shadow duration-700 group">
 								<motion.div
-									className="relative w-full h-[300px] overflow-hidden"
-									whileHover={{ y: -200 }} // px менен жазуу жакшы
-									transition={{ duration: 2, ease: "easeInOut" }}>
-									<Image
-										src={project.imageSrc}
-										alt={project.title}
-										fill // fill колдонсоңуз, object-cover менен автоматтык туура болот
-										className="object-cover object-top min-h-screen"
-										sizes="(max-width: 768px) 100vw, 50vw"
-									/>
+									className={`relative cursor-progress w-full h-[${CONTAINER_HEIGHT}px] overflow-hidden rounded-3xl`}>
+									<motion.div
+										className="w-full h-full"
+										whileHover={{ y: -(project.fullHeight - CONTAINER_HEIGHT) }}
+										transition={{ duration: 5, ease: "easeInOut" }}>
+										<Image
+											src={project.imageSrc}
+											alt={project.title}
+											fill
+											className="object-cover object-top transition-none"
+											sizes="(max-width: 768px) 100vw, 50vw"
+											style={{ minHeight: `${project.fullHeight}px` }}
+										/>
+									</motion.div>
 								</motion.div>
+
 								<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none"></div>
 							</div>
 
-							<div className="w-full md:w-1/2 flex flex-col gap-6 p-8 bg-gradient-to-b from-transparent to-slate-50/50 dark:to-slate-900/50 rounded-3xl">
+							<div className="w-full md:w-1/2 flex flex-col gap-6 p-8 bg-transparent backdrop-blur-2xl rounded-3xl border dark:border-white/10 ">
 								<h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
 									{project.title}
 								</h2>
 								<p className="text-slate-600 dark:text-slate-400 leading-relaxed">
 									{project.description}
 								</p>
-
+								{/* ... (башка элементтер) */}
 								<div className="grid grid-cols-2 md:grid-cols-3 gap-2">
 									{project.techStack.map((tech, i) => (
 										<div

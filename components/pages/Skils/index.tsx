@@ -1,176 +1,232 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-cards";
-import { EffectCards, Autoplay } from "swiper/modules";
-import {
-	Code2,
-	Zap,
-	Rocket,
-	Terminal,
-	Layers,
-	Layout,
-	Sparkles,
-} from "lucide-react";
 
-const ServiceData = [
-	{
-		title: "React Development",
-		icon: Code2,
-		emoji: "⚛️",
-		color: "from-blue-500 to-cyan-500",
-	},
-	{
-		title: "Next.js Applications",
-		icon: Rocket,
-		emoji: "🚀",
-		color: "from-purple-500 to-pink-500",
-	},
-	{
-		title: "TypeScript",
-		icon: Terminal,
-		emoji: "📘",
-		color: "from-yellow-500 to-orange-500",
-	},
-	{
-		title: "Modern Frontend",
-		icon: Layers,
-		emoji: "💻",
-		color: "from-green-500 to-emerald-500",
-	},
-	{
-		title: "Performance Optimization",
-		icon: Zap,
-		emoji: "⚡",
-		color: "from-indigo-500 to-purple-500",
-	},
-	{
-		title: "Responsive Design",
-		icon: Layout,
-		emoji: "📱",
-		color: "from-rose-500 to-red-500",
-	},
-];
+import {
+	FaReact,
+	FaJs,
+	FaSass,
+	FaGitAlt,
+	FaHtml5,
+	FaNodeJs,
+	FaNpm,
+	FaGithub,
+} from "react-icons/fa";
+import {
+	SiTypescript,
+	SiNextdotjs,
+	SiTailwindcss,
+	SiRedux,
+	SiVite,
+	SiWebpack,
+	SiStyledcomponents,
+	SiPostman,
+	SiYarn,
+	SiVercel,
+	SiFirebase,
+	SiSupabase,
+	SiDocker,
+	SiFramer,
+	SiBun,
+	SiMui,
+	SiBootstrap,
+	SiAxios,
+	SiFigma,
+	SiExpress,
+	SiSwagger,
+} from "react-icons/si";
+import { DiCss3 } from "react-icons/di";
 
 const TechStack = [
-	{ name: "React", icon: Layers },
-	{ name: "Next.js", icon: Terminal },
-	{ name: "TypeScript", icon: Code2 },
-	{ name: "Tailwind", icon: Layout },
+	// --- Core Frontend ---
+	{
+		name: "HTML5",
+		icon: FaHtml5,
+		color: "text-orange-600 dark:text-orange-400",
+	},
+	{ name: "CSS3", icon: DiCss3, color: "text-blue-600 dark:text-blue-400" },
+	{
+		name: "JavaScript",
+		icon: FaJs,
+		color: "text-yellow-500 dark:text-yellow-300",
+	},
+	{
+		name: "TypeScript",
+		icon: SiTypescript,
+		color: "text-blue-700 dark:text-blue-300",
+	},
+
+	// --- Frameworks & Libraries ---
+	{ name: "React", icon: FaReact, color: "text-blue-500 dark:text-blue-400" },
+	{
+		name: "Next.js",
+		icon: SiNextdotjs,
+		color: "text-gray-800 dark:text-gray-200",
+	},
+	{
+		name: "Redux",
+		icon: SiRedux,
+		color: "text-purple-600 dark:text-purple-400",
+	},
+	{
+		name: "Framer Motion",
+		icon: SiFramer,
+		color: "text-pink-500 dark:text-pink-400",
+	},
+	{
+		name: "Figma",
+		icon: SiFigma,
+		color: "text-pink-500 dark:text-pink-400",
+	},
+	{
+		name: "Material UI",
+		icon: SiMui,
+		color: "text-blue-700 dark:text-blue-300",
+	},
+	{
+		name: "Bootstrap",
+		icon: SiBootstrap,
+		color: "text-purple-700 dark:text-purple-400",
+	},
+
+	// --- Styling Tools ---
+	{
+		name: "Tailwind CSS",
+		icon: SiTailwindcss,
+		color: "text-cyan-600 dark:text-cyan-400",
+	},
+	{
+		name: "SCSS / SASS",
+		icon: FaSass,
+		color: "text-pink-600 dark:text-pink-400",
+	},
+	{
+		name: "Styled Components",
+		icon: SiStyledcomponents,
+		color: "text-pink-500 dark:text-pink-400",
+	},
+
+	// --- Build & Dev Tools ---
+	{ name: "Vite", icon: SiVite, color: "text-purple-500 dark:text-purple-300" },
+	{
+		name: "Webpack",
+		icon: SiWebpack,
+		color: "text-blue-500 dark:text-blue-300",
+	},
+	{
+		name: "Express.js",
+		icon: SiExpress,
+		color: "text-pink-400 dark:text-pink-300",
+	},
+
+	// --- Backend & API ---
+	{
+		name: "Node.js",
+		icon: FaNodeJs,
+		color: "text-green-600 dark:text-green-400",
+	},
+
+	{ name: "Axios", icon: SiAxios, color: "text-sky-500 dark:text-sky-400" },
+
+	// --- Tools & Version Control ---
+	{
+		name: "Git",
+		icon: FaGitAlt,
+		color: "text-orange-600 dark:text-orange-400",
+	},
+	{
+		name: "GitHub ",
+		icon: FaGithub,
+		color: "text-gray-800 dark:text-gray-200",
+	},
+	{
+		name: "Postman",
+		icon: SiPostman,
+		color: "text-orange-500 dark:text-orange-300",
+	},
+
+	// --- Testing & QA ---
+	{
+		name: "Swagger",
+		icon: SiSwagger,
+		color: "text-green-600 dark:text-green-400",
+	},
+
+	// --- Deployment & Hosting ---
+	{ name: "Vercel", icon: SiVercel, color: "text-gray-900 dark:text-white" },
+
+	{
+		name: "Firebase",
+		icon: SiFirebase,
+		color: "text-amber-500 dark:text-amber-300",
+	},
+	{
+		name: "Supabase",
+		icon: SiSupabase,
+		color: "text-emerald-600 dark:text-emerald-400",
+	},
+	{ name: "Docker", icon: SiDocker, color: "text-blue-600 dark:text-blue-400" },
+
+	// --- Design Tools ---
+	{ name: "Bun", icon: SiBun, color: "text-indigo-500 dark:text-indigo-300" },
+
+	// --- Package Managers ---
+	{ name: "NPM", icon: FaNpm, color: "text-red-600 dark:text-red-400" },
+	{ name: "Yarn", icon: SiYarn, color: "text-blue-500 dark:text-blue-300" },
 ];
 
 const ModernSkillsPortfolio = () => {
 	return (
-		<section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden transition-all duration-700">
-			{/* Background visuals */}
-			<div className="absolute inset-0">
-				<div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
-				<div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl pointer-events-none"></div>
-				<div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-500/10 dark:bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
-			</div>
+		<div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#f6f8fb] to-[#eef1f6] dark:from-[#0e1116] dark:via-[#0d1218] dark:to-[#10151c] transition-colors duration-500">
+			{/* Background blur effects */}
+			<div className="absolute top-32 right-32 w-[420px] h-[420px] bg-blue-900/40 dark:bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+			<div className="absolute bottom-32 left-32 w-[420px] h-[420px] bg-blue-900/40 dark:bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-			{/* Tech Stack */}
-			<div className="relative z-10 pt-20 pb-12 px-6 max-w-7xl mx-auto">
-				<div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-20">
-					{TechStack.map((tech, i) => {
-						const Icon = tech.icon;
-						return (
-							<div
-								key={i}
-								className="group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:scale-105">
-								<div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-								<Icon className="w-8 h-8 mx-auto mb-3 text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
-								<p className="text-sm font-semibold text-center text-slate-700 dark:text-slate-300">
-									{tech.name}
-								</p>
-							</div>
-						);
-					})}
-				</div>
-			</div>
+			<div className="relative z-10 flex items-center min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+				<div className="container mx-auto max-w-7xl">
+					{/* Header Section */}
+					<div className="mb-12 sm:mb-16 md:mb-20">
+						<div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+							<div className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-blue-500 to-blue-400"></div>
+							<span className="text-blue-600 dark:text-blue-300 text-xs sm:text-sm font-mono tracking-wider uppercase">
+								Professional Skills
+							</span>
+						</div>
 
-			{/* Core Competencies */}
-			<div className="relative z-10 py-16 px-6 max-w-7xl mx-auto">
-				<div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-						Core Competencies
-					</h2>
-					<p className="text-slate-600 dark:text-slate-400">
-						Specialized skills and technologies I work with
-					</p>
-				</div>
+						<h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-none mb-4">
+							<span className="block bg-gradient-to-r from-[#1a1a1a] to-[#3a3a3a] dark:from-white dark:to-gray-300 bg-clip-text text-transparent font-normal">
+								Technical Expertise
+							</span>
+						</h1>
 
-				<div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-					{/* Left: 3 cards */}
-					<div className="order-2 lg:order-1 space-y-6">
-						{ServiceData.slice(0, 3).map((item, i) => {
-							const Icon = item.icon;
+						<p className="mt-4 text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl">
+							Frontend иштеп чыгуучу катары колдонгон заманбап технологиялар
+							жана инструменттер.
+						</p>
+					</div>
+
+					{/* Tech Stack Grid */}
+					<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 max-w-6xl mx-auto mb-12 sm:mb-16 md:mb-20">
+						{TechStack.map((tech, i) => {
+							const Icon = tech.icon;
 							return (
 								<div
 									key={i}
-									className="group bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 hover:scale-105">
-									<div className="flex items-center gap-4">
-										<div
-											className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl`}>
-											{item.emoji}
-										</div>
-										<div className="flex-1">
-											<h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
-												{item.title}
-											</h3>
-											<p className="text-sm text-slate-600 dark:text-slate-400">
-												Professional expertise
-											</p>
-										</div>
-										<Icon className="w-6 h-6 text-slate-400 dark:text-slate-600 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
-									</div>
+									className="group backdrop-blur-xl bg-transparent border border-white/40 dark:border-white/10 rounded-xl p-3 sm:p-4 hover:border-blue-500/60 dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-105 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+									<Icon
+										className={`w-6 h-6 sm:w-7 sm:h-7 mx-auto mb-2 ${tech.color} transition-colors`}
+									/>
+									<p className="text-xs sm:text-sm font-semibold text-center text-slate-700 dark:text-slate-300">
+										{tech.name}
+									</p>
 								</div>
 							);
 						})}
 					</div>
-
-					<div className="order-1 lg:order-2">
-						<Swiper
-							effect="cards"
-							grabCursor={true}
-							autoplay={{ delay: 3000, disableOnInteraction: false }}
-							modules={[EffectCards, Autoplay]}
-							className="w-full max-w-sm mx-auto"
-							cardsEffect={{
-								perSlideOffset: 8,
-								perSlideRotate: 2,
-								slideShadows: false,
-							}}>
-							{ServiceData.map((item, index) => {
-								const Icon = item.icon;
-								return (
-									<SwiperSlide key={index}>
-										<div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 shadow-xl">
-											<div className="h-full flex flex-col p-8">
-												<div
-													className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-4xl mb-6`}>
-													{item.emoji}
-												</div>
-												<h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
-													{item.title}
-												</h3>
-												<p className="text-slate-600 dark:text-slate-400 text-sm mb-auto">
-													Advanced skills and modern practices
-												</p>
-												<div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800">
-													<Icon className="w-12 h-12 text-slate-300 dark:text-slate-700" />
-												</div>
-											</div>
-										</div>
-									</SwiperSlide>
-								);
-							})}
-						</Swiper>
-					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 
