@@ -1,8 +1,8 @@
 "use client";
 
+import React, { useEffect, useRef } from "react";
 import "swiper/css";
 import "swiper/css/effect-cards";
-
 import {
 	FaReact,
 	FaJs,
@@ -39,7 +39,6 @@ import {
 import { DiCss3 } from "react-icons/di";
 
 const TechStack = [
-	// --- Core Frontend ---
 	{
 		name: "HTML5",
 		icon: FaHtml5,
@@ -56,8 +55,6 @@ const TechStack = [
 		icon: SiTypescript,
 		color: "text-blue-700 dark:text-blue-300",
 	},
-
-	// --- Frameworks & Libraries ---
 	{ name: "React", icon: FaReact, color: "text-blue-500 dark:text-blue-400" },
 	{
 		name: "Next.js",
@@ -74,11 +71,7 @@ const TechStack = [
 		icon: SiFramer,
 		color: "text-pink-500 dark:text-pink-400",
 	},
-	{
-		name: "Figma",
-		icon: SiFigma,
-		color: "text-pink-500 dark:text-pink-400",
-	},
+	{ name: "Figma", icon: SiFigma, color: "text-pink-500 dark:text-pink-400" },
 	{
 		name: "Material UI",
 		icon: SiMui,
@@ -89,8 +82,6 @@ const TechStack = [
 		icon: SiBootstrap,
 		color: "text-purple-700 dark:text-purple-400",
 	},
-
-	// --- Styling Tools ---
 	{
 		name: "Tailwind CSS",
 		icon: SiTailwindcss,
@@ -106,8 +97,6 @@ const TechStack = [
 		icon: SiStyledcomponents,
 		color: "text-pink-500 dark:text-pink-400",
 	},
-
-	// --- Build & Dev Tools ---
 	{ name: "Vite", icon: SiVite, color: "text-purple-500 dark:text-purple-300" },
 	{
 		name: "Webpack",
@@ -119,43 +108,29 @@ const TechStack = [
 		icon: SiExpress,
 		color: "text-pink-400 dark:text-pink-300",
 	},
-
-	// --- Backend & API ---
 	{
 		name: "Node.js",
 		icon: FaNodeJs,
 		color: "text-green-600 dark:text-green-400",
 	},
-
 	{ name: "Axios", icon: SiAxios, color: "text-sky-500 dark:text-sky-400" },
-
-	// --- Tools & Version Control ---
 	{
 		name: "Git",
 		icon: FaGitAlt,
 		color: "text-orange-600 dark:text-orange-400",
 	},
-	{
-		name: "GitHub ",
-		icon: FaGithub,
-		color: "text-gray-800 dark:text-gray-200",
-	},
+	{ name: "GitHub", icon: FaGithub, color: "text-gray-800 dark:text-gray-200" },
 	{
 		name: "Postman",
 		icon: SiPostman,
 		color: "text-orange-500 dark:text-orange-300",
 	},
-
-	// --- Testing & QA ---
 	{
 		name: "Swagger",
 		icon: SiSwagger,
 		color: "text-green-600 dark:text-green-400",
 	},
-
-	// --- Deployment & Hosting ---
 	{ name: "Vercel", icon: SiVercel, color: "text-gray-900 dark:text-white" },
-
 	{
 		name: "Firebase",
 		icon: SiFirebase,
@@ -167,25 +142,74 @@ const TechStack = [
 		color: "text-emerald-600 dark:text-emerald-400",
 	},
 	{ name: "Docker", icon: SiDocker, color: "text-blue-600 dark:text-blue-400" },
-
-	// --- Design Tools ---
 	{ name: "Bun", icon: SiBun, color: "text-indigo-500 dark:text-indigo-300" },
-
-	// --- Package Managers ---
 	{ name: "NPM", icon: FaNpm, color: "text-red-600 dark:text-red-400" },
 	{ name: "Yarn", icon: SiYarn, color: "text-blue-500 dark:text-blue-300" },
 ];
 
 const ModernSkillsPortfolio = () => {
+	const canvasRef = useRef<HTMLCanvasElement>(null);
+
+	useEffect(() => {
+		const canvas = canvasRef.current;
+		if (!canvas) return;
+		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		let stars = Array.from({ length: 120 }, () => ({
+			x: Math.random() * canvas.width,
+			y: Math.random() * canvas.height,
+			size: Math.random() * 1.2,
+			speed: 0.3 + Math.random() * 0.7,
+		}));
+
+		function animate() {
+			if (!ctx || !canvas) return;
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.fillStyle = "white";
+
+			stars.forEach((star) => {
+				ctx.beginPath();
+				ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+				ctx.fill();
+				star.y += star.speed;
+				if (star.y > canvas.height) {
+					star.y = 0;
+					star.x = Math.random() * canvas.width;
+				}
+			});
+
+			requestAnimationFrame(animate);
+		}
+
+		animate();
+
+		const handleResize = () => {
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+		};
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
 	return (
 		<div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#f6f8fb] to-[#eef1f6] dark:from-[#0e1116] dark:via-[#0d1218] dark:to-[#10151c] transition-colors duration-500">
+			{/* 🌠 Жылдыздар фон */}
+			<canvas
+				ref={canvasRef}
+				className="absolute inset-0 w-full h-full pointer-events-none"
+			/>
+
 			{/* Background blur effects */}
 			<div className="absolute top-32 right-32 w-[420px] h-[420px] bg-blue-900/40 dark:bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
 			<div className="absolute bottom-32 left-32 w-[420px] h-[420px] bg-blue-900/40 dark:bg-blue-900/10 rounded-full blur-[120px] pointer-events-none"></div>
 
 			<div className="relative z-10 flex items-center min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6">
 				<div className="container mx-auto max-w-7xl">
-					{/* Header Section */}
+					{/* Header */}
 					<div className="mb-12 sm:mb-16 md:mb-20">
 						<div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
 							<div className="w-8 sm:w-10 md:w-12 h-px bg-gradient-to-r from-blue-500 to-blue-400"></div>
@@ -206,7 +230,7 @@ const ModernSkillsPortfolio = () => {
 						</p>
 					</div>
 
-					{/* Tech Stack Grid */}
+					{/* Grid */}
 					<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 max-w-6xl mx-auto mb-12 sm:mb-16 md:mb-20">
 						{TechStack.map((tech, i) => {
 							const Icon = tech.icon;

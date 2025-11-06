@@ -4,10 +4,12 @@ import ProfileShape from "../ProfileShape";
 import TechRotator from "@/components/ui/TechRotator/TechRotator";
 import { gsap } from "gsap";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export default function HomePages() {
 	const textRef = useRef<HTMLParagraphElement>(null);
 	const t = useTranslations("Home");
+	const router = useRouter();
 
 	useEffect(() => {
 		if (textRef.current) {
@@ -79,7 +81,9 @@ export default function HomePages() {
 								</p>
 
 								<div className="flex items-center gap-6 pt-4">
-									<button className="group relative overflow-hidden rounded-full cursor-pointer">
+									<button
+										onClick={() => router.push("/my-project")}
+										className="group relative overflow-hidden  rounded-full cursor-pointer">
 										<div className="absolute inset-0 bg-white/40 dark:bg-white/10 backdrop-blur-md rounded-full border border-white/30 dark:border-white/10 transition-all duration-300 group-hover:bg-white/60 dark:group-hover:bg-white/20"></div>
 										<div className="relative px-8 py-3 text-slate-800 dark:text-white text-sm font-medium">
 											{t("projectBtn")}
@@ -93,7 +97,7 @@ export default function HomePages() {
 							</div>
 						</div>
 					</div>
-					<div className="absolute bottom-0 left-0 right-0">
+					<div className="absolute bottom-0 left-0 right-0 -z-10 pointer-events-none">
 						<ProfileShape />
 					</div>
 				</main>
