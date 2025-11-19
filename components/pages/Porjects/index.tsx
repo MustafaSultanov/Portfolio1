@@ -130,12 +130,8 @@ export default function Projects() {
 								<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl transition-shadow duration-700 group">
 									{/* 1. Контейнер: Көрүнүп турган терезе */}
 									<motion.div
-										// CONTAINER_HEIGHT'ти Tailwind'ге киргизүү үчүн, аны динамикалык түрдө киргизебиз.
 										className={`relative w-full h-[${CONTAINER_HEIGHT}px] overflow-hidden rounded-3xl`}>
-										{/* 2. Жылдырылуучу элемент (Image wrapper) */}
 										<motion.div
-											// Сүрөттү ороочу элементтин бийиктиги "project.fullHeight" болушу керек.
-											// 'h-[${project.fullHeight}px]' колдонуу үчүн CSS'ти пайдаланабыз же инлайн стиль.
 											className="relative w-full rounded-3xl"
 											style={{ height: `${project.fullHeight}px` }}
 											initial={{ y: yInitial }}
@@ -145,7 +141,6 @@ export default function Projects() {
 												src={project.imageSrc}
 												alt={project.title}
 												fill
-												// Баштапкы абалда үстү көрсөтүлөт
 												className="object-cover object-top"
 												sizes="(max-width: 768px) 100vw, 50vw"
 											/>
