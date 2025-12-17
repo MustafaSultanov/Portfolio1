@@ -16,7 +16,6 @@ const Sidebar = () => {
 	const router = useRouter();
 	const locale = useLocale();
 
-	// Храним предыдущие значения
 	const prevDataRef = useRef({
 		pathname: pathname,
 		locale: locale,
@@ -25,7 +24,6 @@ const Sidebar = () => {
 	useEffect(() => {
 		const prev = prevDataRef.current;
 
-		// Определяем тип изменения
 		const pathChanged = prev.pathname !== pathname;
 		const localeChanged = prev.locale !== locale;
 
