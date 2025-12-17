@@ -53,7 +53,7 @@ export default function HomePages() {
 								<div className="flex items-center gap-4 mb-6">
 									<div className="w-12 h-px bg-gradient-to-r from-blue-600/70 to-blue-400/40"></div>
 									<span className="text-blue-600/80 dark:text-blue-300/80 text-sm font-mono tracking-wider uppercase">
-										Portfolio 2024
+										{t("portfolioText")}
 									</span>
 								</div>
 								<div id="logo">

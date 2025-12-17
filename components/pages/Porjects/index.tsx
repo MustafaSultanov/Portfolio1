@@ -6,7 +6,6 @@ import { FaGithub } from "react-icons/fa";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
-// 💡 ЛОКАЛДЫК СҮРӨТТӨРДҮ ИМПОРТТОО (Сүрөттүн чыныгы бийиктиги дал келишин текшериңиз!)
 import aksoft from "../../../public/assets/projects/aksoft.dev.png";
 import akylman from "../../../public/assets/projects/akulman.edu.kg.png";
 import nefashion from "../../../public/assets/projects/nefashion.png";
@@ -33,7 +32,6 @@ const projects: Project[] = [
 		liveDemoUrl: "https://akylman.edu.kg/",
 		imageSrc: akylman,
 		number: "02",
-		// Мисалы, бул жерде 1200 болсун.
 		fullHeight: 1500,
 	},
 	{
@@ -41,14 +39,12 @@ const projects: Project[] = [
 		description:
 			"Aksoft — бул IT компания, үч демилгечи тарабынан негизделген жана инновациялык веб жана мобилдик чечимдерди түзөт. Биз талантка жана практикалык жакындоого баа берип, көйгөйлөрдү мүмкүнчүлүктөргө айландырабыз жана бизнеске санариптешүүдө жардам беребиз.",
 		techStack: ["TypeScript", "Next js", "Scss"],
-
 		githubUrl: "https://github.com/SultanovMusa/lms",
 		liveDemoUrl: "https://aksoft.dev/",
 		imageSrc: aksoft,
 		number: "01",
 		fullHeight: 2180,
 	},
-
 	{
 		title: "Nefashion",
 		description:
@@ -68,19 +64,17 @@ const projects: Project[] = [
 		githubUrl: "https://github.com/SultanovMusa/Peak-Space",
 		liveDemoUrl: "https://furniture-omega-seven.vercel.app/",
 		imageSrc: astro,
-		number: "03",
+		number: "04",
 		fullHeight: 2200,
 	},
 ];
 
-// Контейнердин туруктуу бийиктиги
 const CONTAINER_HEIGHT = 300;
 
 export default function Projects() {
 	return (
 		<section className="relative bg-white dark:bg-slate-950 py-32 px-6 overflow-hidden">
 			<div className="absolute inset-0 pointer-events-none">
-				{/* ... (Animation background) */}
 				<div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-tr from-purple-300 to-blue-400 rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
 				<div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-pink-300 to-yellow-400 rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
 			</div>
@@ -111,11 +105,9 @@ export default function Projects() {
 
 				<div className="flex flex-col gap-40">
 					{projects.map((project, idx) => {
-						// 💡 АР БИР ПРОЕКТ ҮЧҮН ЖЫЛДЫРУУ МААНИЛЕРИН ЭСЕПТӨӨ
-						// Баштапкы абалда сүрөттүн үстү көрүнөт (y: 0), hover'де асты көрүнөт (y: терс).
-						const yInitial = 0;
-						// Сүрөттүн толук бийиктиги менен контейнердин бийиктигинин айырмасы (терс маани)
-						const yWhileHover = CONTAINER_HEIGHT - project.fullHeight; // Мисалы, 300 - 900 = -600
+						// Баштапкы абалда сурот үстүнкү жагынан көрүнөт (y: 0)
+						// Hover кылганда сурот толук ылдый жылып көрүнөт
+						const yWhileHover = -(project.fullHeight - CONTAINER_HEIGHT);
 
 						return (
 							<div
@@ -128,14 +120,14 @@ export default function Projects() {
 								</div>
 
 								<div className="relative w-full md:w-1/2 rounded-3xl overflow-hidden shadow-2xl transition-shadow duration-700 group">
-									{/* 1. Контейнер: Көрүнүп турган терезе */}
-									<motion.div
-										className={`relative w-full h-[${CONTAINER_HEIGHT}px] overflow-hidden rounded-3xl`}>
+									<div
+										className="relative w-full overflow-hidden rounded-3xl"
+										style={{ height: `${CONTAINER_HEIGHT}px` }}>
 										<motion.div
 											className="relative w-full rounded-3xl"
 											style={{ height: `${project.fullHeight}px` }}
-											initial={{ y: yInitial }}
-											whileHover={{ y: yWhileHover }} // Сүрөт ЖОГОРУ жылат, ошондуктан АСТЫ көрүнөт.
+											initial={{ y: 0 }}
+											whileHover={{ y: yWhileHover }}
 											transition={{ duration: 3, ease: "easeInOut" }}>
 											<Image
 												src={project.imageSrc}
@@ -145,13 +137,12 @@ export default function Projects() {
 												sizes="(max-width: 768px) 100vw, 50vw"
 											/>
 										</motion.div>
-									</motion.div>
+									</div>
 
 									<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none"></div>
 								</div>
 
 								<div className="w-full md:w-1/2 flex flex-col gap-6 p-8 bg-gradient-to-b from-transparent to-slate-50/50 dark:to-slate-900/50 rounded-3xl">
-									{/* ... (Текст жана шилтемелер) */}
 									<h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
 										{project.title}
 									</h2>
@@ -180,6 +171,7 @@ export default function Projects() {
 												<FaGithub size={20} />{" "}
 												<span className="underline text-sm">View Code</span>
 											</a>
+
 											<a
 												href={project.liveDemoUrl}
 												target="_blank"
@@ -190,7 +182,7 @@ export default function Projects() {
 											</a>
 										</div>
 										<div className="text-xs text-slate-400 dark:text-slate-600 font-mono">
-											{project.number} / 03
+											{project.number} / 04
 										</div>
 									</div>
 								</div>

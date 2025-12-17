@@ -1,40 +1,72 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
 import { NavLinks } from "@/constants";
 import Transition from "./Transition";
 
 const Sidebar = () => {
 	const [isRouting, setIsRouting] = useState(false);
 	const [isActive, setIsActive] = useState("/");
-	const [prevPath, setPrevPath] = useState("/");
 	const [hoveredIndex, setHoveredIndex] = useState<null | number>(null);
 
-	const path = usePathname();
+	const pathname = usePathname();
 	const router = useRouter();
+	const locale = useLocale();
+
+	// Храним предыдущие значения
+	const prevDataRef = useRef({
+		pathname: pathname,
+		locale: locale,
+	});
 
 	useEffect(() => {
-		if (prevPath !== path) setIsRouting(true);
-	}, [path, prevPath]);
+		const prev = prevDataRef.current;
 
-	useEffect(() => {
-		if (isRouting) {
-			setPrevPath(path);
-			const timeout = setTimeout(() => setIsRouting(false), 1200);
+		// Определяем тип изменения
+		const pathChanged = prev.pathname !== pathname;
+		const localeChanged = prev.locale !== locale;
+
+		// Анимация запускается только если:
+		// 1. Изменился путь (pathname)
+		// 2. НО при этом НЕ изменился только язык
+		const shouldAnimate = pathChanged && !localeChanged;
+
+		if (shouldAnimate) {
+			setIsRouting(true);
+
+			const timeout = setTimeout(() => {
+				setIsRouting(false);
+			}, 1200);
+
+			// Обновляем сохранённые значения
+			prevDataRef.current = {
+				pathname: pathname,
+				locale: locale,
+			};
+
 			return () => clearTimeout(timeout);
 		}
-	}, [isRouting]);
+
+		// Если изменился только язык, просто обновляем ref без анимации
+		if (localeChanged) {
+			prevDataRef.current = {
+				pathname: pathname,
+				locale: locale,
+			};
+		}
+	}, [pathname, locale]);
 
 	useEffect(() => {
-		setIsActive(path);
-	}, [path]);
+		setIsActive(pathname);
+	}, [pathname]);
 
 	return (
 		<>
 			<AnimatePresence mode="wait">
-				{isRouting && <Transition />}
+				{isRouting && <Transition key="transition" />}
 			</AnimatePresence>
 
 			<div className="fixed left-1/2 -translate-x-1/2 bottom-8 z-50">
@@ -60,7 +92,7 @@ const Sidebar = () => {
 										animate={{ opacity: 1, scale: 1, y: 0 }}
 										exit={{ opacity: 0, scale: 0.95, y: 5 }}
 										transition={{ duration: 0.2, ease: "easeOut" }}
-										className="absolute bottom-full  -right-[10px] -translate-x-1/2 mb-3 pointer-events-none">
+										className="absolute bottom-full -right-[10px] -translate-x-1/2 mb-3 pointer-events-none">
 										<div className="relative px-4 py-2 bg-slate-900/95 backdrop-blur-sm text-white text-sm font-medium rounded-lg whitespace-nowrap shadow-xl border border-blue-400/30">
 											{link.name}
 											{/* Tooltip arrow */}
@@ -78,13 +110,13 @@ const Sidebar = () => {
 								transition={{ type: "spring", stiffness: 400, damping: 18 }}
 								className={`p-3 rounded-xl transition-all duration-300 ${
 									isActive === link.link
-										? "bg-blue-600/25 "
+										? "bg-blue-600/25"
 										: "dark:hover:bg-white/10 hover:bg-blue-600/25"
 								}`}>
 								<link.icon
 									className={`w-7 h-7 transition-colors duration-300 ${
 										isActive === link.link
-											? "text-blue-500 "
+											? "text-blue-500"
 											: "text-black dark:text-white dark-hover:text-white hover-none"
 									}`}
 								/>

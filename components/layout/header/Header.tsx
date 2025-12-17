@@ -5,26 +5,26 @@ import { BsGithub } from "react-icons/bs";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useTransition } from "react";
 import logo from "../../../public/assets/smzlogo.jpg";
-// import AnimatedNumbers from "@/components/ui/AnimatedNumbers";
 import { useLocale, useTranslations } from "next-intl";
 import russianFlag from "../../../public/assets/flags/russian.png";
 import englishFlag from "../../../public/assets/flags/english.png";
 import kyrgyzFlag from "../../../public/assets/flags/kyrgyz.png";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { ModeToggle } from "@/components/darkMode/ModeToggle";
 
 const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
-	const dropdownRef = useRef(null);
+	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	const locale = useLocale();
 	const t = useTranslations("Home");
 	const router = useRouter();
 	const pathname = usePathname();
+	const [isPending, startTransition] = useTransition();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -38,7 +38,7 @@ const Header = () => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (
 				dropdownRef.current &&
-				!(dropdownRef.current as HTMLDivElement).contains(event.target as Node)
+				!dropdownRef.current.contains(event.target as Node)
 			) {
 				setIsLangDropdownOpen(false);
 			}
@@ -54,25 +54,24 @@ const Header = () => {
 		{ name: "Кыргызча", flag: kyrgyzFlag, code: "kg" },
 		{ name: "Русский", flag: russianFlag, code: "ru" },
 		{ name: "English", flag: englishFlag, code: "en" },
-	];
+	] as const;
 
 	const currentLanguage =
 		languages.find((lang) => lang.code === locale) || languages[0];
 
 	const switchLanguage = (newLocale: string) => {
-		const pathSegments = pathname.split("/").filter((segment) => segment);
-		const currentLocale = pathSegments[0];
-		let newPath = "";
+		if (newLocale === locale) return;
 
-		if (languages.some((lang) => lang.code === currentLocale)) {
-			pathSegments[0] = newLocale;
-			newPath = "/" + pathSegments.join("/");
-		} else {
-			newPath = "/" + newLocale + pathname;
-		}
-
-		router.push(newPath);
 		setIsLangDropdownOpen(false);
+
+		startTransition(() => {
+			// Используем router.replace для более плавного перехода
+			router.replace(
+				// @ts-ignore
+				pathname,
+				{ locale: newLocale }
+			);
+		});
 	};
 
 	return (
@@ -80,8 +79,8 @@ const Header = () => {
 			<header
 				className={`fixed top-0 w-full z-50 transition-all duration-500 ${
 					isScrolled
-						? " bg-transparent backdrop-blur-xl shadow-lg shadow-black/5 border-b border-slate-200/50 dark:border-slate-800/50"
-						: "bg-transparent backdrop-blur-xl"
+						? " bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-lg shadow-black/5 border-b border-slate-200/50 dark:border-slate-800/50"
+						: "bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl"
 				}`}>
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center justify-between h-20">
@@ -93,6 +92,7 @@ const Header = () => {
 									src={logo}
 									alt="Mustafa Sultanov"
 									className="relative w-11 h-11 lg:w-12 lg:h-12 rounded-lg ring-2 ring-white/10 dark:ring-white/5"
+									priority
 								/>
 							</div>
 							<div className="hidden sm:block">
@@ -109,13 +109,16 @@ const Header = () => {
 							<div className="relative" ref={dropdownRef}>
 								<button
 									onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-									className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 border border-transparent hover:border-slate-200 dark:hover:border-slate-700">
+									disabled={isPending}
+									className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 ${
+										isPending ? "opacity-50 cursor-not-allowed" : ""
+									}`}>
 									<div className="w-5 h-3.5 relative overflow-hidden rounded-sm">
 										<Image
 											src={currentLanguage.flag}
-											alt="flag"
-											layout="fill"
-											objectFit="cover"
+											alt={currentLanguage.name}
+											fill
+											className="object-cover"
 										/>
 									</div>
 									<span>{currentLanguage.name}</span>
@@ -135,29 +138,42 @@ const Header = () => {
 								</button>
 
 								{isLangDropdownOpen && (
-									<div className="absolute top-full right-0 mt-2 w-48 bg-red-500 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+									<div className="absolute top-full right-0 mt-2 w-48 bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl overflow-hidden z-50">
 										{languages.map((language, index) => (
 											<button
 												key={language.code}
+												disabled={isPending || locale === language.code}
 												className={`flex items-center w-full px-4 py-3 text-sm transition-colors duration-150 ${
 													locale === language.code
-														? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium"
+														? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium cursor-default"
 														: "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
 												} ${
 													index !== languages.length - 1
 														? "border-b border-slate-100 dark:border-slate-800"
 														: ""
-												}`}
+												} ${isPending ? "opacity-50 cursor-not-allowed" : ""}`}
 												onClick={() => switchLanguage(language.code)}>
-												<div className="mr-3 w-6 h-4 relative overflow-hidden rounded-sm">
+												<div className="mr-3 w-6 h-4 relative overflow-hidden rounded-sm flex-shrink-0">
 													<Image
 														src={language.flag}
-														alt="flag"
-														layout="fill"
-														objectFit="cover"
+														alt={language.name}
+														fill
+														className="object-cover"
 													/>
 												</div>
-												{language.name}
+												<span>{language.name}</span>
+												{locale === language.code && (
+													<svg
+														className="ml-auto w-4 h-4 text-blue-600 dark:text-blue-400"
+														fill="currentColor"
+														viewBox="0 0 20 20">
+														<path
+															fillRule="evenodd"
+															d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+															clipRule="evenodd"
+														/>
+													</svg>
+												)}
 											</button>
 										))}
 									</div>
@@ -185,13 +201,15 @@ const Header = () => {
 								].map((social, index) => {
 									const IconComponent = social.icon;
 									return (
-										<Link
+										<a
 											key={index}
 											href={social.href}
+											target="_blank"
+											rel="noopener noreferrer"
 											aria-label={social.label}
 											className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200">
 											<IconComponent className="w-5 h-5" />
-										</Link>
+										</a>
 									);
 								})}
 							</div>
@@ -218,40 +236,53 @@ const Header = () => {
 
 				{/* Mobile Menu */}
 				<div
-					className={`lg:hidden transition-all duration-300 ease-in-out ${
+					className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
 						isMobileMenuOpen
 							? "max-h-screen opacity-100 visible"
 							: "max-h-0 opacity-0 invisible"
 					}`}>
-					<div className="bg-white dark:bg-transparent backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 shadow-lg">
+					<div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 shadow-lg">
 						<div className="container mx-auto px-4 sm:px-6 py-6 space-y-6">
 							{/* Mobile Language Switcher */}
 							<div>
 								<div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
-									Language
+									{isPending ? "Загрузка..." : "Language"}
 								</div>
 								<div className="space-y-1">
 									{languages.map((language) => (
 										<button
 											key={language.code}
+											disabled={isPending || locale === language.code}
 											className={`flex items-center w-full px-4 py-3 text-sm rounded-lg transition-all duration-200 ${
 												locale === language.code
-													? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium shadow-sm"
+													? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium shadow-sm cursor-default"
 													: "text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50"
-											}`}
+											} ${isPending ? "opacity-50 cursor-not-allowed" : ""}`}
 											onClick={() => {
 												switchLanguage(language.code);
 												setIsMobileMenuOpen(false);
 											}}>
-											<div className="mr-3 w-6 h-4 relative overflow-hidden rounded-sm">
+											<div className="mr-3 w-6 h-4 relative overflow-hidden rounded-sm flex-shrink-0">
 												<Image
 													src={language.flag}
-													alt="flag"
-													layout="fill"
-													objectFit="cover"
+													alt={language.name}
+													fill
+													className="object-cover"
 												/>
 											</div>
-											{language.name}
+											<span>{language.name}</span>
+											{locale === language.code && (
+												<svg
+													className="ml-auto w-4 h-4 text-blue-600 dark:text-blue-400"
+													fill="currentColor"
+													viewBox="0 0 20 20">
+													<path
+														fillRule="evenodd"
+														d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+														clipRule="evenodd"
+													/>
+												</svg>
+											)}
 										</button>
 									))}
 								</div>
@@ -282,15 +313,17 @@ const Header = () => {
 									].map((social, index) => {
 										const IconComponent = social.icon;
 										return (
-											<Link
+											<a
 												key={index}
 												href={social.href}
+												target="_blank"
+												rel="noopener noreferrer"
 												className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-all duration-200 group">
 												<IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
 												<span className="text-xs font-medium">
 													{social.label}
 												</span>
-											</Link>
+											</a>
 										);
 									})}
 								</div>
