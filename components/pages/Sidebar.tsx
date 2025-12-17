@@ -95,7 +95,6 @@ const Sidebar = () => {
 										className="absolute bottom-full -right-[10px] -translate-x-1/2 mb-3 pointer-events-none">
 										<div className="relative px-4 py-2 bg-slate-900/95 backdrop-blur-sm text-white text-sm font-medium rounded-lg whitespace-nowrap shadow-xl border border-blue-400/30">
 											{link.name}
-											{/* Tooltip arrow */}
 											<div className="absolute top-full left-1/2 -translate-x-1/2">
 												<div className="w-3 h-3 bg-slate-900/95 rotate-45 border-r border-b border-blue-400/30" />
 											</div>
