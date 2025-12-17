@@ -29,9 +29,7 @@ const Sidebar = () => {
 		const pathChanged = prev.pathname !== pathname;
 		const localeChanged = prev.locale !== locale;
 
-		// Анимация запускается только если:
-		// 1. Изменился путь (pathname)
-		// 2. НО при этом НЕ изменился только язык
+		
 		const shouldAnimate = pathChanged && !localeChanged;
 
 		if (shouldAnimate) {
