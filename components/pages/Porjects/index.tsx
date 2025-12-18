@@ -105,8 +105,6 @@ export default function Projects() {
 
 				<div className="flex flex-col gap-40">
 					{projects.map((project, idx) => {
-						// Баштапкы абалда сурот үстүнкү жагынан көрүнөт (y: 0)
-						// Hover кылганда сурот толук ылдый жылып көрүнөт
 						const yWhileHover = -(project.fullHeight - CONTAINER_HEIGHT);
 
 						return (
