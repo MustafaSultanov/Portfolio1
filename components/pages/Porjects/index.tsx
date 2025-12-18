@@ -10,6 +10,7 @@ import aksoft from "../../../public/assets/projects/aksoft.dev.png";
 import akylman from "../../../public/assets/projects/akulman.edu.kg.png";
 import nefashion from "../../../public/assets/projects/nefashion.png";
 import astro from "../../../public/assets/projects/astro.png";
+import { ServiceData } from '../../../constants/index';
 
 interface Project {
 	title: string;
@@ -99,7 +100,7 @@ export default function Projects() {
 
 					<p className="mt-6 text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl">
 						Exploring my work through interactive, creative, and modern web
-						applications.
+						applications. fkjfs kdkd dkkd o ServiceData
 					</p>
 				</div>
 
